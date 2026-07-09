@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nāṭyaśāstra I: Rasa as Embodied Śabda · Series A Extended · Part Eight · Cultural Musings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-void:#100b07;
+  --bg-panel:#1b130c;
+  --bg-panel-2:#241a10;
+  --bg-panel-3:#150f09;
+  --gold:#c39a3c;
+  --gold-bright:#e9c877;
+  --gold-dim:#8a7038;
+  --crimson:#8f1f2e;
+  --crimson-bright:#c23a4d;
+  --ink:#e9ddc3;
+  --ink-dim:#a89474;
+  --ink-faint:#6f6148;
+  --rule:#3a2c1a;
+  --rule-bright:#5a4526;
+  --font-display:'Cinzel', serif;
+  --font-body:'Spectral', serif;
+  --font-dev:'Noto Sans Devanagari', serif;
+  --shadow-deep: 0 20px 60px rgba(0,0,0,0.55);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:
+    radial-gradient(ellipse at top, rgba(195,154,60,0.06), transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(143,31,46,0.05), transparent 55%),
+    var(--bg-void);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:17px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--crimson); color:#fff;}
+a{color:var(--gold-bright); text-decoration:none; border-bottom:1px solid var(--gold-dim);}
+a:hover{color:var(--gold);}
+
+.skip{position:absolute; left:-9999px;}
+.skip:focus{left:1rem; top:1rem; background:var(--bg-panel); color:var(--ink); padding:.5rem 1rem; z-index:999; border:1px solid var(--gold);}
+
+/* ===== Top bar ===== */
+.topbar{
+  position:sticky; top:0; z-index:50;
+  background:linear-gradient(180deg, rgba(16,11,7,0.97), rgba(16,11,7,0.9));
+  border-bottom:1px solid var(--rule);
+  backdrop-filter:blur(6px);
+}
+.topbar-inner{
+  max-width:1180px; margin:0 auto; padding:.85rem 1.5rem;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+}
+.brand{font-family:var(--font-display); letter-spacing:.14em; font-size:.78rem; color:var(--gold-bright); text-transform:uppercase;}
+.brand span{color:var(--ink-dim); font-weight:400;}
+.brand a{border:none; color:inherit;}
+.view-toggle{display:flex; gap:.4rem; font-size:.72rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.08em;}
+.view-toggle button{
+  background:transparent; border:1px solid var(--rule-bright); color:var(--ink-dim);
+  padding:.35rem .7rem; cursor:pointer; font-family:inherit; letter-spacing:inherit;
+}
+.view-toggle button.active{color:var(--gold-bright); border-color:var(--gold-dim); background:rgba(195,154,60,0.08);}
+
+/* ===== Section nav ===== */
+.secnav{
+  position:sticky; top:52px; z-index:40;
+  background:rgba(27,19,12,0.96);
+  border-bottom:1px solid var(--rule);
+  overflow-x:auto; white-space:nowrap;
+  scrollbar-width:thin;
+}
+.secnav-inner{max-width:1180px; margin:0 auto; padding:.55rem 1.5rem; display:flex; gap:1.1rem;}
+.secnav a{
+  border:none; font-family:var(--font-display); font-size:.68rem; letter-spacing:.05em;
+  color:var(--ink-faint); text-transform:uppercase; white-space:nowrap;
+}
+.secnav a:hover{color:var(--gold-bright);}
+
+/* ===== Series ribbon ===== */
+.ribbon{background:var(--bg-panel-3); border-bottom:1px solid var(--rule); padding:.6rem 0; overflow-x:auto;}
+.ribbon-inner{max-width:1180px; margin:0 auto; padding:0 1.5rem; font-size:.82rem; color:var(--ink-faint); white-space:nowrap;}
+.ribbon-inner a{border:none; color:var(--ink-dim); margin:0 .15rem;}
+.ribbon-inner .current{color:var(--gold-bright); font-weight:600;}
+
+/* ===== Hero ===== */
+.hero{max-width:980px; margin:0 auto; padding:4.5rem 1.5rem 3rem; text-align:center;}
+.hero .dev{
+  font-family:var(--font-dev); color:var(--gold-dim); font-size:1.05rem;
+  letter-spacing:.02em; margin-bottom:1.6rem; line-height:2.1;
+}
+.eyebrow{
+  font-family:var(--font-display); font-size:.78rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--crimson-bright); margin-bottom:1rem;
+}
+.hero h1{
+  font-family:var(--font-display); font-weight:700; font-size:clamp(2rem, 4.4vw, 3.1rem);
+  line-height:1.25; color:var(--gold-bright); margin:0 0 1.2rem;
+  text-shadow:0 2px 30px rgba(195,154,60,0.18);
+}
+.hero .subtitle{font-size:1.12rem; color:var(--ink-dim); font-style:italic; line-height:1.7; max-width:760px; margin:0 auto;}
+
+.meta-strip{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:0;
+  max-width:1000px; margin:2.6rem auto 0; border:1px solid var(--rule); background:var(--bg-panel);
+}
+.meta-strip div{padding:1.1rem 1.3rem; border-right:1px solid var(--rule);}
+.meta-strip div:last-child{border-right:none;}
+.meta-strip .k{font-family:var(--font-display); font-size:.65rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:.35rem;}
+.meta-strip .v{font-size:.9rem; color:var(--ink);}
+
+.threshold-glyph{
+  display:flex; justify-content:center; align-items:center; gap:1rem; margin:2.5rem 0 0; color:var(--gold-dim);
+  font-size:1.4rem;
+}
+.threshold-glyph .line{height:1px; width:70px; background:linear-gradient(90deg, transparent, var(--gold-dim), transparent);}
+
+/* ===== Content wrapper ===== */
+.wrap{max-width:900px; margin:0 auto; padding:0 1.5rem;}
+
+.series-context{margin:3.5rem auto; padding:2rem; background:var(--bg-panel); border:1px solid var(--rule);}
+.series-context h3{font-family:var(--font-display); color:var(--gold-bright); font-size:1rem; letter-spacing:.05em; margin-top:0;}
+.series-table{width:100%; border-collapse:collapse; margin:1.2rem 0; font-size:.88rem;}
+.series-table th, .series-table td{border:1px solid var(--rule); padding:.55rem .7rem; text-align:left; vertical-align:top;}
+.series-table th{background:var(--bg-panel-2); color:var(--gold-dim); font-family:var(--font-display); font-weight:500; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase;}
+.series-table tr.current td{color:var(--gold-bright); background:rgba(143,31,46,0.08);}
+.reading-note{font-size:.9rem; color:var(--ink-dim); border-left:2px solid var(--crimson); padding-left:1rem; margin-top:1.3rem; font-style:italic;}
+
+.abstract{margin:2.5rem 0 4rem;}
+.abstract h2{font-family:var(--font-display); color:var(--gold-bright); font-size:1.3rem; letter-spacing:.05em;}
+.abstract p{color:var(--ink); text-align:justify;}
+
+/* ===== Section blocks ===== */
+.block-divider{
+  display:flex; align-items:center; gap:1rem; margin:5rem 0 2.5rem; color:var(--gold-dim);
+}
+.block-divider .diamond{font-size:1rem;}
+.block-divider .line{flex:1; height:1px; background:var(--rule-bright);}
+
+section.roman{margin:4rem 0;}
+section.roman .num{
+  font-family:var(--font-display); font-size:.85rem; letter-spacing:.3em; color:var(--crimson-bright);
+  display:block; margin-bottom:.4rem;
+}
+section.roman h2{
+  font-family:var(--font-display); font-weight:600; font-size:1.55rem; color:var(--gold-bright);
+  margin:0 0 1.6rem; line-height:1.4;
+}
+.subsec{margin:1.6rem 0;}
+.subsec h3{font-family:var(--font-body); font-weight:700; font-size:1rem; color:var(--ink); margin:0 0 .5rem;}
+.subsec h3 .tag{font-family:var(--font-display); font-size:.68rem; color:var(--gold-dim); letter-spacing:.08em;}
+p{text-align:justify; color:var(--ink); margin:0 0 1.1rem;}
+
+.verse{
+  margin:1.8rem 0; padding:1.3rem 1.6rem; background:var(--bg-panel);
+  border-left:2px solid var(--crimson); display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;
+}
+.verse .dev{font-family:var(--font-dev); font-size:1.05rem; color:var(--gold-bright); line-height:1.9; flex:1; min-width:220px;}
+.verse .gloss{font-size:.85rem; color:var(--ink-faint); font-style:italic; flex:1; min-width:220px;}
+
+.pull-quote{
+  font-family:var(--font-display); font-size:1.15rem; color:var(--gold-bright);
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  padding:1.3rem 0; margin:2.2rem 0; text-align:center; font-weight:400; line-height:1.6;
+}
+
+table.data{width:100%; border-collapse:collapse; margin:1.6rem 0; font-size:.86rem;}
+table.data caption{caption-side:top; text-align:left; font-family:var(--font-display); font-size:.72rem; letter-spacing:.06em; color:var(--gold-dim); text-transform:uppercase; margin-bottom:.6rem;}
+table.data th, table.data td{border:1px solid var(--rule); padding:.6rem .75rem; text-align:left; vertical-align:top;}
+table.data th{background:var(--bg-panel-2); color:var(--gold-dim); font-family:var(--font-display); font-weight:500; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em;}
+
+.lpup{
+  margin:1.5rem 0 2.4rem; border:1px solid var(--rule); background:var(--bg-panel);
+}
+.lpup .lpup-row{display:grid; grid-template-columns:130px 1fr; border-top:1px solid var(--rule);}
+.lpup .lpup-row:first-child{border-top:none;}
+.lpup .lpup-k{
+  padding:1rem 1rem; font-family:var(--font-display); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--crimson-bright); background:var(--bg-panel-3); border-right:1px solid var(--rule);
+}
+.lpup .lpup-v{padding:1rem 1.2rem; font-size:.93rem;}
+.lpup .lpup-v p{margin:0;}
+
+.rq-card{
+  margin:2.2rem 0; border:1px solid var(--rule); background:linear-gradient(180deg, var(--bg-panel), var(--bg-panel-3));
+  box-shadow:var(--shadow-deep);
+}
+.rq-head{padding:1.2rem 1.5rem; border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; gap:1rem; align-items:baseline; flex-wrap:wrap;}
+.rq-head .rq-num{font-family:var(--font-display); color:var(--crimson-bright); font-size:.75rem; letter-spacing:.1em;}
+.rq-head h3{font-family:var(--font-body); font-weight:700; font-size:1.08rem; color:var(--gold-bright); margin:.3rem 0 0; line-height:1.5;}
+.rq-body{padding:.4rem 1.5rem 1.4rem;}
+
+@media (max-width:600px){
+  .lpup .lpup-row{grid-template-columns:1fr;}
+  .lpup .lpup-k{border-right:none; border-bottom:1px solid var(--rule);}
+}
+
+/* ===== Tab widget ===== */
+.tabwidget{margin:3rem 0 5rem; border:1px solid var(--rule); background:var(--bg-panel);}
+.tabwidget-head{padding:1.6rem 1.8rem 1rem; border-bottom:1px solid var(--rule);}
+.tabwidget-head .eyebrow{margin-bottom:.6rem;}
+.tabwidget-head h2{font-family:var(--font-display); color:var(--gold-bright); font-size:1.3rem; margin:0 0 .6rem;}
+.tabwidget-head p{color:var(--ink-dim); font-size:.92rem; margin:0;}
+.tabs{display:flex; flex-wrap:wrap; gap:0; border-bottom:1px solid var(--rule); background:var(--bg-panel-3);}
+.tab-btn{
+  flex:1; min-width:150px; background:transparent; border:none; border-right:1px solid var(--rule);
+  color:var(--ink-faint); font-family:var(--font-display); font-size:.72rem; letter-spacing:.05em;
+  text-transform:uppercase; padding:1rem .8rem; cursor:pointer;
+}
+.tab-btn:last-child{border-right:none;}
+.tab-btn.active{color:var(--gold-bright); background:var(--bg-panel); border-bottom:2px solid var(--crimson-bright); margin-bottom:-1px;}
+.tab-panel{display:none; padding:2rem 1.8rem 2.4rem;}
+.tab-panel.active{display:block;}
+.tab-panel h4{font-family:var(--font-display); color:var(--gold-bright); font-size:1rem; margin:1.6rem 0 .8rem;}
+.tab-panel h4:first-child{margin-top:0;}
+
+.glossary-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1rem; margin-top:1rem;}
+.gloss-entry{border:1px solid var(--rule); padding:1rem; background:var(--bg-panel-3);}
+.gloss-entry .dev{font-family:var(--font-dev); color:var(--gold-bright); font-size:1.05rem;}
+.gloss-entry .translit{font-style:italic; color:var(--ink-dim); font-size:.85rem; margin:.15rem 0 .5rem;}
+.gloss-entry p{font-size:.85rem; margin:0; color:var(--ink);}
+
+/* ===== Appendix / footer blocks ===== */
+.appendix, .footnotes, .bibliography, .glossary-final, .recap{margin:4rem 0;}
+.appendix h2, .footnotes h2, .bibliography h2, .glossary-final h2, .recap h2{
+  font-family:var(--font-display); color:var(--gold-bright); font-size:1.25rem; letter-spacing:.03em;
+}
+.footnotes ol{padding-left:1.3rem; font-size:.85rem; color:var(--ink-dim);}
+.footnotes li{margin-bottom:.6rem;}
+.bibliography h4{font-family:var(--font-display); font-size:.85rem; color:var(--gold-dim); text-transform:uppercase; letter-spacing:.05em; margin:1.6rem 0 .6rem;}
+.bibliography p{font-size:.9rem; line-height:1.9;}
+
+.recap blockquote{
+  border-left:2px solid var(--crimson); padding-left:1.4rem; margin:1.8rem 0; font-style:italic; color:var(--ink-dim);
+}
+.recap .signoff{text-align:center; margin-top:3rem; color:var(--gold-dim); font-family:var(--font-display); letter-spacing:.15em; font-size:.85rem;}
+
+.handoff{
+  display:flex; justify-content:space-between; gap:1rem; margin:3rem 0; padding:1.3rem 1.6rem;
+  border:1px solid var(--rule); background:var(--bg-panel); flex-wrap:wrap; font-size:.85rem;
+}
+.handoff a{border:none;}
+
+footer.sitefoot{
+  border-top:1px solid var(--rule); margin-top:5rem; padding:2.5rem 1.5rem 3.5rem; text-align:center;
+  color:var(--ink-faint); font-size:.82rem;
+}
+footer.sitefoot .om{font-family:var(--font-dev); font-size:1.3rem; color:var(--gold-dim); margin-bottom:1rem;}
+footer.sitefoot p{color:var(--ink-faint); margin:.3rem 0;}
+
+.evid-tag{
+  display:inline-block; font-family:var(--font-display); font-size:.6rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:.15rem .5rem; border:1px solid var(--rule-bright); color:var(--ink-faint); margin-left:.5rem; vertical-align:middle;
+}
+.evid-tag.doc{color:var(--gold-dim); border-color:var(--gold-dim);}
+.evid-tag.syn{color:var(--crimson-bright); border-color:var(--crimson-bright);}
+.evid-tag.brk{color:var(--ink-dim);}
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><a href="https://culturalmusings.com">Cultural Musings <span>· Vedic &amp; Śāstric Research Platform</span></a></div>
+    <div class="view-toggle">
+      <button class="active" type="button">Continuous Scroll</button>
+      <button type="button">Paginated View</button>
+    </div>
+  </div>
+</div>
+
+<nav class="secnav" aria-label="Section navigation">
+  <div class="secnav-inner">
+    <a href="#series-context">Series Context</a>
+    <a href="#abstract">Abstract</a>
+    <a href="#sec-1">I. Threshold</a>
+    <a href="#sec-block1">Block I · Śabda</a>
+    <a href="#sec-block2">Block II · Rasa-Sūtra</a>
+    <a href="#sec-block3">Block III · Sahṛdaya</a>
+    <a href="#sec-block4">Block IV · Ritual/Cosmos</a>
+    <a href="#sec-block5">Block V · Contemporary</a>
+    <a href="#sec-rq">Research Questions</a>
+    <a href="#tabwidget-anchor">Six-Panel Deep-Dive</a>
+    <a href="#sec-appendix">Appendix</a>
+    <a href="#footnotes">Footnotes</a>
+    <a href="#bibliography">Bibliography</a>
+    <a href="#glossary">Glossary</a>
+    <a href="#sec-recap">Recap &amp; Handoff</a>
+  </div>
+</nav>
+
+<div class="ribbon">
+  <div class="ribbon-inner">
+    <a href="#">Part I · Śabdabrahman</a> ·
+    <a href="#">Part II · Sphoṭa Completed</a> ·
+    <a href="#">Part III · Mātṛkā</a> ·
+    <a href="#">Part IV · Mātṛkā-Nyāsa</a> ·
+    <a href="#">Part V · Prāṇa, Citta</a> ·
+    <a href="#">Part VI · Kuṇḍalinī</a> ·
+    <a href="#">Part VII · Vaikharī Becomes Gesture</a> ·
+    <span class="current">Part VIII · Nāṭyaśāstra I: Rasa as Embodied Śabda</span> ·
+    <a href="#">Part IX · Abhinaya's Fourfold Method</a> ·
+    <a href="#">Part X · Toward the Karaṇas</a> ·
+    <a href="#">Part XI · The 108 Karaṇas</a> ·
+    <a href="#">Part XII · Closing Synthesis</a>
+  </div>
+</div>
+
+<main id="main">
+<div class="hero">
+  <div class="dev">रस · अभिनयः · साधारणीकरणम् · सात्त्विकाभिनयः · वैखर्याः शरीरं प्रति संक्रमः</div>
+  <div class="eyebrow">Series A · Extended Sequence · Part Eight of Twelve</div>
+  <h1>Nāṭyaśāstra I: Rasa as Embodied Śabda</h1>
+  <p class="subtitle">Where Vaikharī's Own Documented Extension Into Gesture, Established at This Sequence's Threshold in Part Seven, Is Traced Into the Nāṭyaśāstra's Full Aesthetic Theory of Rasa — Sound's Furthest Documented Migration Into the Muscle, the Eye, and the Breath of the Performing Body</p>
+
+  <div class="threshold-glyph"><span class="line"></span><span>✦</span><span class="line"></span></div>
+
+  <div class="meta-strip">
+    <div><div class="k">Series</div><div class="v">A Extended · Part VIII of XII</div></div>
+    <div><div class="k">Vāk Level</div><div class="v">Vaikharī Fully Extended — Embodied, Precedes Codification</div></div>
+    <div><div class="k">Format</div><div class="v">White Paper · Thirty-Two Core Sections + Fifteen Research-Question Cards + Six-Panel Widget</div></div>
+    <div><div class="k">Predecessor</div><div class="v">Part Seven — Vaikharī Becomes Gesture: The Threshold to Abhinaya</div></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div id="series-context" class="series-context">
+  <h3>Why This Paper, and Why It Stands Where It Stands</h3>
+  <p>Part Seven established the specific documented textual warrant — aupacārika prayoga, the named technical term for figurative extension — by which vaikharī's own category, speech fully externalised into audible sound, is carried by later tradition beyond spoken sound specifically to encompass any fully externalised, physically manifest expression of underlying meaning. This paper takes up that warrant directly and asks what happens when it is applied at full technical scale: not to a single gesture read as a word, but to an entire theatrical art whose founding text, the Nāṭyaśāstra, organises the whole of embodied performance around a single aesthetic category, rasa, that this paper argues is best read as vaikharī's own most elaborated destination rather than as an independently arising theory of art that happens to share this sequence's vocabulary.</p>
+
+  <table class="series-table">
+    <tr><th>Part</th><th>Stage of Descent</th><th>Focus</th></tr>
+    <tr><td>I</td><td>Undifferentiated ground</td><td>Śabdabrahman: Vāk as the Ground of Being</td></tr>
+    <tr><td>II</td><td>Grammatical differentiation</td><td>Sphoṭa Completed: From Varṇa to Vākya</td></tr>
+    <tr><td>III</td><td>Ritual-phonemic power</td><td>Mātṛkā: The Phoneme as Power</td></tr>
+    <tr><td>IV</td><td>Somatic encoding</td><td>Mātṛkā-Nyāsa: Encoding Vāk Into the Body</td></tr>
+    <tr><td>V</td><td>Yogic discipline</td><td>Prāṇa, Citta, and the Yogic Technology of Speech</td></tr>
+    <tr><td>VI</td><td>Yogic ascent</td><td>Kuṇḍalinī: Vāk as Ascent</td></tr>
+    <tr><td>VII</td><td>Threshold to gesture</td><td>Vaikharī Becomes Gesture: The Threshold to Abhinaya</td></tr>
+    <tr class="current"><td>VIII</td><td>Aesthetic embodiment</td><td>This Paper — Nāṭyaśāstra I: Rasa as Embodied Śabda</td></tr>
+    <tr><td>IX</td><td>Somatic method</td><td>Nāṭyaśāstra II: Abhinaya's Fourfold Method</td></tr>
+    <tr><td>X</td><td>Codification begins</td><td>Toward the Karaṇas: Movement as Codified Vāk</td></tr>
+    <tr><td>XI</td><td>Full codification</td><td>The 108 Karaṇas: Structure and Source</td></tr>
+    <tr><td>XII</td><td>Closing return</td><td>Closing Synthesis: Śabdabrahman to Śarīra</td></tr>
+  </table>
+
+  <p class="reading-note">Reading Note — This paper presupposes Part Seven's own specific conclusion (the aupacārika prayoga warrant) but does not otherwise presuppose material beyond the original Series A. Readers familiar with Series B's own Nāṭyaśāstra material will recognise convergent content approached here, as this sequence's Part One already flagged for the series as a whole, from Vāk's own originating side rather than from Series B's proliferated-śāstra frame. This paper's own thirty core sections are organised into five thematic blocks corresponding to the philosophy of embodied śabda, the somatic mechanics of rasa, the epistemology of the audience, the ritual and cosmic frame of the Nāṭyaśāstra's genesis, and this material's contemporary and comparative reception — followed by a dedicated fifteen-card treatment of this paper's own research questions, each argued through the Lakṣaṇa–Prakriyā–Udāharaṇa–Phala method this series applies to its own unresolved or synthetic claims.</p>
+</div>
+
+<div id="abstract" class="abstract">
+  <h2>Abstract</h2>
+  <p>This paper argues that rasa, the Nāṭyaśāstra's own central aesthetic category, is best documented not as an independently arising theory of dramatic emotion but as vaikharī's own furthest traced elaboration within this sequence's genealogy — sound's migration from audible speech into the muscle, the eye, the breath, and the involuntary physiology of the trained performer. Five thematic blocks organise this paper's thirty core sections. The first examines embodied śabda directly: the four levels of speech manifesting in the performer's own body, sphoṭa theory's bearing on rasa's instantaneous arising, dhvani read as somatic resonance, the vocal discipline of vācikābhinaya, the documented contrast between mantric and dramatic sound, and Nāda Brahma's own presence in the theatrical space. The second examines rasa's own somatic mechanics: the Rasa-Sūtra's documented formula, sāttvikābhinaya's involuntary physiology, the geometry of āṅgikābhinaya, the eye's own documented primacy, mudrā as corporeal language, and costume as extended corporeality. The third examines the audience's own epistemology: sādhāraṇīkaraṇa, somatic mirroring, Abhinavagupta's intersubjectivity, rasa-āsvāda as spiritual taste, citta-druti, and a bracketed comparison to Western catharsis. The fourth examines the Nāṭyaśāstra's own ritual and cosmic frame: its status as a documented Fifth Veda, the jarjara, pūrvaraṅga, theater architecture, the text's mythic genesis, and the tāṇḍava-lāsya binary. The fifth examines this material's contemporary reception: neuroaesthetics, Merleau-Ponty's phenomenology, affect theory, Kūṭiyāṭṭam's living survival, decolonising method, and the documented question of digital mediation. A dedicated fifteen-card section then argues this paper's own research questions directly, each through this series' Lakṣaṇa–Prakriyā–Udāharaṇa–Phala method, before a six-panel deep-dive widget, methodological appendix, footnotes, bibliography, and glossary close the paper.</p>
+</div>
+
+<!-- ============ SECTION I ============ -->
+<section class="roman" id="sec-1">
+  <span class="num">I.</span>
+  <h2>Why Rasa Is This Sequence's Documented Destination for Vaikharī</h2>
+
+  <div class="subsec">
+    <h3>1.1 <span class="tag">The Threshold Part Seven Left Open</span></h3>
+    <p>Part Seven closed by establishing that later commentators possessed a specific named technical term, aupacārika prayoga, for extending vaikharī's own category beyond spoken sound to any fully externalised, physically manifest expression of meaning — a documented warrant this paper reads as necessary but not yet sufficient for this sequence's own wider claim, since a named warrant for extension does not by itself establish that the Nāṭyaśāstra's own aesthetic theory actually exercises that warrant at the scale this paper proposes.</p>
+  </div>
+  <div class="subsec">
+    <h3>1.2 <span class="tag">This Paper's Own Organising Claim</span></h3>
+    <p>This paper's organising claim is that rasa is documented, across the Nāṭyaśāstra's own sixth chapter and its principal commentarial tradition, as arising specifically through the trained performer's embodied production of vibhāva, anubhāva, and vyabhicāribhāva — determinants, consequents, and transitory states that are each, on this paper's reading, vaikharī-level phenomena: physically enacted, externally perceptible, and produced through the same disciplined vocal and somatic apparatus this sequence's Parts V–VII have already documented as vaikharī's own instrument.</p>
+  </div>
+  <div class="subsec">
+    <h3>1.3 <span class="tag">Scope of This Paper</span></h3>
+    <p>This paper confines itself to rasa's own theoretical architecture — its somatic mechanics, its audience-side epistemology, and its ritual and cosmic framing — reserving abhinaya's own fourfold technical method (āṅgika, vācika, āhārya, sāttvika, examined here only insofar as each bears directly on rasa's own arising) for Part Nine's fuller documented treatment, consistent with this sequence's own established practice of dividing large textual domains across successive parts rather than compressing them prematurely.</p>
+  </div>
+
+  <div class="pull-quote">Rasa is not a theory about emotion in art. It is vāk's own documented account of what a fully embodied word becomes.</div>
+</section>
+
+<div class="block-divider" id="sec-block1"><span class="diamond">❖</span><div class="line"></div><span style="font-family:var(--font-display); font-size:.75rem; letter-spacing:.15em; text-transform:uppercase;">Block I · The Philosophy of Embodied Śabda</span><div class="line"></div><span class="diamond">❖</span></div>
+
+<!-- ============ SECTION II ============ -->
+<section class="roman" id="sec-2">
+  <span class="num">II.</span>
+  <h2>Vāc as Corporeal Reality: The Four Stages of Speech in the Performer's Own Body</h2>
+  <div class="subsec">
+    <h3>2.1 <span class="tag">Restating the Fourfold Scheme for This Paper's Own Use</span></h3>
+    <p>This sequence's Part One documented parā, paśyantī, madhyamā, and vaikharī as speech's own classical fourfold graded descent from wholly undifferentiated ground to fully externalised, audible sound. This paper reads the trained performer's own body as a documented site where that same descent becomes directly observable rather than merely inferred: the actor's own preparatory absorption in a role's emotional ground (read here as a performer-specific paśyantī), the internal rehearsal of gesture and line prior to execution (madhyamā), and the actual physically executed performance (vaikharī) are documented, this paper argues, as a specific and disciplined re-enactment of the same descent this sequence has traced since Part One.</p>
+  </div>
+  <div class="subsec">
+    <h3>2.2 <span class="tag">Why the Performer's Body Is a Documented Rather Than Merely Analogical Site</span></h3>
+    <p>This paper is careful to distinguish this claim from loose metaphor: the Nāṭyaśāstra's own documented training regimen, examined more fully in Part Nine, requires the actor to internalise a role's emotional determinants before any external gesture is attempted — a documented sequencing this paper reads as textual evidence that the tradition itself treats the paśyantī-to-vaikharī descent as the actor's own working method, not as a convenient framework this paper imposes retrospectively.</p>
+  </div>
+  <div class="subsec">
+    <h3>2.3 <span class="tag">The Documented Limit of This Claim</span></h3>
+    <p>This paper notes, consistent with this series' evidentiary honesty, that the Nāṭyaśāstra itself does not use the specific terms parā, paśyantī, and madhyamā in its own documented sixth and seventh chapters on rasa and bhāva; this paper's mapping is accordingly registered as a structural-synthetic proposal <span class="evid-tag syn">synthetic</span> — consistent with the fourfold scheme's own later, broader application this sequence has documented — rather than as a claim the Nāṭyaśāstra's own text states in these terms.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION III ============ -->
+<section class="roman" id="sec-3">
+  <span class="num">III.</span>
+  <h2>Sphoṭa Theory and Rasa: The Linguistic Burst as Aesthetic Ignition</h2>
+  <div class="subsec">
+    <h3>3.1 <span class="tag">The Documented Parallel Structure</span></h3>
+    <p>Part One's own Section 4.1 documented sphoṭa as naming the unitary meaning-bearing entity that "bursts forth" in a listener's cognition once a sequence of sounds has been heard, distinct from the sequential sounds that merely manifest it. This paper reads rasa's own documented arising as structurally parallel: the Rasa-Sūtra's threefold conjunction of vibhāva, anubhāva, and vyabhicāribhāva is documented to produce rasa not as a gradual accumulation but as a single, instantaneous aesthetic cognition in the sahṛdaya — a documented immediacy this paper reads as rasa's own version of sphoṭa's characteristic burst.</p>
+  </div>
+  <div class="subsec">
+    <h3>3.2 <span class="tag">Why the Parallel Is Structural Rather Than Textually Identified</span></h3>
+    <p>This paper documents, with the same care Section 2.3 has already exercised, that no primary Nāṭyaśāstra or Abhinavabhārati source known to this paper uses sphoṭa terminology directly in explaining rasa's arising; the parallel this section develops is offered as a structural-synthetic proposal <span class="evid-tag syn">synthetic</span> specific to this sequence's own genealogical project, useful precisely because both phenomena are documented, in their own separate textual traditions, as unitary cognitions irreducible to their sequential physical causes.</p>
+  </div>
+  <div class="subsec">
+    <h3>3.3 <span class="tag">Pratibhā as the Shared Documented Mechanism</span></h3>
+    <p>This paper notes one documented point of closer textual contact: pratibhā, the direct non-inferential insight Part One's Tab Panel II documented as sphoṭa's own mode of cognitive grasping, is also documented in later aesthetic theory, including material this paper's Section XVI examines directly, as a term applied to the sahṛdaya's own capacity for rasa-cognition — a shared technical vocabulary this paper reads as stronger evidence for the structural parallel than mere thematic resemblance alone would supply.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION IV ============ -->
+<section class="roman" id="sec-4">
+  <span class="num">IV.</span>
+  <h2>Dhvani as Somatic Resonance: The Unsaid Vibrating Within the Actor</h2>
+  <div class="subsec">
+    <h3>4.1 <span class="tag">Dhvani Restated From Part One</span></h3>
+    <p>Part One's own Section XXXIV documented dhvani, in its narrower technical sense, as the physically produced transient sound-token manifesting sphoṭa. Sanskrit poetics' own separate and considerably more expansive dhvani theory, associated principally with Ānandavardhana, uses the same root term to name suggestion — meaning conveyed beyond a text's or performance's own literal, explicitly stated content.</p>
+  </div>
+  <div class="subsec">
+    <h3>4.2 <span class="tag">Dhvani as Suggestion, Documented in the Performer's Own Body</span></h3>
+    <p>This paper reads dhvani-as-suggestion as achieving a documented somatic register specifically in performance: a trained actor's held pause, a barely completed gesture, or a controlled withholding of full vocal expression is documented, across commentarial discussion of abhinaya technique this paper's Part Nine will examine more fully, as itself a vehicle of suggested rather than stated meaning — the unsaid, on this paper's reading, is not merely a property of poetic language read silently but is a documented technique the actor's own body actively produces and the sahṛdaya's own body is held to register.</p>
+  </div>
+  <div class="subsec">
+    <h3>4.3 <span class="tag">Why This Paper Treats Dhvani-Theory and Rasa-Theory as Documented Convergent Traditions</span></h3>
+    <p>This paper notes, consistent with standard scholarship, that dhvani theory and rasa theory are documented to converge most explicitly in Abhinavagupta's own synthesis, examined further in Section XVI, where suggested meaning (dhvani) is held to be the specific textual and performative mechanism by which rasa itself is most fully evoked — a documented convergence this paper reads as directly relevant to this section's own somatic reading, since Abhinavagupta's synthesis treats dhvani not as an alternative to rasa theory but as its necessary vehicle.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION V ============ -->
+<section class="roman" id="sec-5">
+  <span class="num">V.</span>
+  <h2>The Breath of Śabda: Vācikābhinaya as Conduit for Prāṇa</h2>
+  <div class="subsec">
+    <h3>5.1 <span class="tag">Vācikābhinaya Defined</span></h3>
+    <p>Vācikābhinaya, one of the four documented branches of abhinaya examined fully in Part Nine, names vocal delivery specifically — the actor's controlled use of pitch, tempo, pause, and vocal quality in service of a role's own emotional content, documented in the Nāṭyaśāstra's own dedicated chapters on dramatic recitation as a technically disciplined art distinct from ordinary speech.</p>
+  </div>
+  <div class="subsec">
+    <h3>5.2 <span class="tag">Prāṇa's Documented Role</span></h3>
+    <p>This sequence's own Part Five documented prāṇāyāma as a yogic technology of breath directly bearing on vaikharī's own production. This paper reads vācikābhinaya as a documented specialised application of that same technology: sustained dramatic recitation, particularly in the extended verse-passages Kūṭiyāṭṭam performance (examined in Section XXIX) is documented to preserve at exceptional length, requires the same disciplined breath-control this sequence's Part Five has already established as prāṇa's own technical domain, applied here specifically in service of vocal characterisation rather than meditative ascent.</p>
+  </div>
+  <div class="subsec">
+    <h3>5.3 <span class="tag">Why This Paper Reads Vācikābhinaya as Vāk's Own Conduit Rather Than Ornament</span></h3>
+    <p>This paper reads vācikābhinaya's own documented technical demands — precise breath-management sustained across long compound Sanskrit and Prākrit verse structures — as evidence against treating vocal delivery as merely decorative accompaniment to a play's textual content: the breath itself is documented, on this paper's reading, as the specific physiological conduit through which Śabdabrahman's own undifferentiated ground (Part One, Section II) becomes, by the time it reaches vācikābhinaya, disciplined dramatic sound.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION VI ============ -->
+<section class="roman" id="sec-6">
+  <span class="num">VI.</span>
+  <h2>Mantra Versus Nāṭya-Śabda: Ritual Power Compared With Dramatic Sound</h2>
+  <div class="subsec">
+    <h3>6.1 <span class="tag">The Documented Points of Contact</span></h3>
+    <p>This paper documents that mantric sound and dramatic sound share a documented common ancestry in this sequence's own terms: both are held, in their respective textual traditions, to derive their efficacy from vaikharī's own connection back through madhyamā and paśyantī to an undifferentiated ground — mantra explicitly through tantric sources this sequence's Parts III–IV have examined, dramatic sound implicitly through the genealogy this paper's Section II has proposed.</p>
+  </div>
+  <div class="subsec">
+    <h3>6.2 <span class="tag">The Documented Point of Divergence</span></h3>
+    <p>This paper documents a significant divergence, however: mantra's own efficacy is standardly documented as substantially independent of a listener's aesthetic or emotional response — a mantra is held to function through its own inherent sonic structure regardless of whether a hearer finds it moving — while rasa is documented, across this paper's own Block III material (Sections XIV–XIX), as constitutively dependent on the sahṛdaya's own trained aesthetic receptivity, making rasa's own efficacy relational in a way mantric efficacy, on standard tantric accounts, is not.</p>
+  </div>
+  <div class="subsec">
+    <h3>6.3 <span class="tag">Why This Paper Documents Rather Than Collapses the Distinction</span></h3>
+    <p>This paper treats the mantra/nāṭya-śabda distinction as a genuine documented difference within a shared genealogy rather than as evidence against this sequence's own wider claim: both are, on this paper's reading, vaikharī's own elaborations, but elaborated toward different documented ends — mantra toward ritual efficacy operating substantially independent of aesthetic response, nāṭya-śabda toward aesthetic efficacy constitutively dependent upon it — a distinction this paper's Section XX will return to directly in examining the Nāṭyaśāstra's own status as a documented Fifth Veda.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION VII ============ -->
+<section class="roman" id="sec-7">
+  <span class="num">VII.</span>
+  <h2>Nāda Brahma in the Theater: The Cosmos as Sound, Mirrored on Stage</h2>
+  <div class="subsec">
+    <h3>7.1 <span class="tag">Nāda Brahma Restated</span></h3>
+    <p>This sequence's Part One documented nāda and anāhata nāda as naming sound generally and unstruck sound specifically, an object of yogic perception this sequence's own Parts V–VI examine at length. Nāda Brahma, the more expansive formula naming the entire cosmos as sound, is documented across the same broadly tantric and yogic literature this sequence has surveyed throughout.</p>
+  </div>
+  <div class="subsec">
+    <h3>7.2 <span class="tag">The Documented Acoustic Design of the Classical Theater</span></h3>
+    <p>This paper reads the Nāṭyaśāstra's own detailed documented specifications for theater construction, examined more fully in Section XXIII, as textual evidence that this cosmological claim was treated as practically consequential rather than merely poetic: precise architectural proportion is documented to have been held necessary specifically for correct acoustic transmission, a documented design-commitment this paper reads as consistent with treating the theatrical space itself as a site where Nāda Brahma's own cosmic claim is made locally, practically operative.</p>
+  </div>
+  <div class="subsec">
+    <h3>7.3 <span class="tag">Why This Paper Treats This as the Chapter's Own Closing Threshold</span></h3>
+    <p>This paper closes its first thematic block by noting that Sections II–VII have together established embodied śabda's own philosophical architecture — the fourfold descent re-enacted in the performer's body, sphoṭa's structural parallel to rasa's own instantaneous arising, dhvani's somatic register, prāṇa's conduit function in vācikābhinaya, the documented mantra/nāṭya-śabda distinction, and Nāda Brahma's own cosmic frame for the theatrical space — supplying this paper's own philosophical ground before its second block turns to rasa's own specific somatic mechanics.</p>
+  </div>
+</section>
+
+<div class="block-divider" id="sec-block2"><span class="diamond">❖</span><div class="line"></div><span style="font-family:var(--font-display); font-size:.75rem; letter-spacing:.15em; text-transform:uppercase;">Block II · Mechanistic &amp; Somatic Dimensions of Rasa</span><div class="line"></div><span class="diamond">❖</span></div>
+
+<!-- ============ SECTION VIII ============ -->
+<section class="roman" id="sec-8">
+  <span class="num">VIII.</span>
+  <h2>The Somatic Alchemy of the Rasa-Sūtra</h2>
+  <div class="subsec">
+    <h3>8.1 <span class="tag">The Rasa-Sūtra Stated, Paraphrased</span></h3>
+    <p>The Nāṭyaśāstra's own sixth chapter states, in paraphrase rather than direct quotation consistent with this series' copyright practice, that rasa arises from the conjunction of vibhāva (the determinants — a role's own situational causes of emotion), anubhāva (the consequents — the physical effects those causes produce), and vyabhicāribhāva (the transitory accompanying emotional states) considered together with the sthāyibhāva, the stable underlying emotion each rasa is documented to elaborate.</p>
+  </div>
+  <div class="subsec">
+    <h3>8.2 <span class="tag">Why This Paper Reads the Conjunction as Documented Physical Event</span></h3>
+    <p>This paper reads samyoga (conjunction), the Rasa-Sūtra's own operative technical term, as naming a documented physical and physiological event rather than a purely conceptual combination: vibhāva is documented to require actual staged causes (another performer, a prop, a specific dramatic circumstance), anubhāva is documented to require actual physical enactment (a specific posture, facial expression, or vocal quality), and their conjunction is therefore documented, on this paper's reading, to occur specifically within and through the actor's own muscular and physiological apparatus rather than in the abstract.</p>
+  </div>
+  <div class="subsec">
+    <h3>8.3 <span class="tag">The Eight (or Nine) Documented Rasas</span></h3>
+    <p>The Nāṭyaśāstra's own sixth chapter documents eight principal rasas — śṛṅgāra (erotic), hāsya (comic), karuṇa (compassionate), raudra (furious), vīra (heroic), bhayānaka (fearful), bībhatsa (disgusted), and adbhuta (wondrous) — with śānta (peaceful) documented as a later, though now widely accepted, ninth addition whose canonical status this paper registers, consistent with standard scholarship, as a genuinely debated later development rather than as uncontested from the text's own earliest documented form.</p>
+
+    <table class="data">
+      <caption>The Documented Rasa–Sthāyibhāva Correspondences</caption>
+      <tr><th>Rasa</th><th>Sthāyibhāva (Stable Emotion)</th><th>Documented Status</th></tr>
+      <tr><td>Śṛṅgāra</td><td>Rati (love)</td><td>Core eight, Nāṭyaśāstra Ch. 6</td></tr>
+      <tr><td>Hāsya</td><td>Hāsa (mirth)</td><td>Core eight</td></tr>
+      <tr><td>Karuṇa</td><td>Śoka (sorrow)</td><td>Core eight</td></tr>
+      <tr><td>Raudra</td><td>Krodha (anger)</td><td>Core eight</td></tr>
+      <tr><td>Vīra</td><td>Utsāha (energy)</td><td>Core eight</td></tr>
+      <tr><td>Bhayānaka</td><td>Bhaya (fear)</td><td>Core eight</td></tr>
+      <tr><td>Bībhatsa</td><td>Jugupsā (disgust)</td><td>Core eight</td></tr>
+      <tr><td>Adbhuta</td><td>Vismaya (wonder)</td><td>Core eight</td></tr>
+      <tr><td>Śānta</td><td>Śama (tranquility)</td><td>Documented later addition; contested canonicity</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ SECTION IX ============ -->
+<section class="roman" id="sec-9">
+  <span class="num">IX.</span>
+  <h2>Sāttvikābhinaya as Involuntary Embodiment</h2>
+  <div class="subsec">
+    <h3>9.1 <span class="tag">Sāttvikābhinaya Defined</span></h3>
+    <p>Sāttvikābhinaya, the fourth documented branch of abhinaya, names involuntary physical responses specifically — the Nāṭyaśāstra's own documented list includes stambha (paralysis), sveda (perspiration), romāñca (horripilation, the involuntary bristling of body hair), svarabheda (voice-breaking), vepathu (trembling), vaivarṇya (change of colour), aśru (tears), and pralaya (loss of consciousness) — eight states documented as arising specifically because they are not, by ordinary physiological function, subject to direct voluntary control.</p>
+  </div>
+  <div class="subsec">
+    <h3>9.2 <span class="tag">Why Involuntary Response Is Documented as Aesthetically Significant Rather Than a Performance Failure</span></h3>
+    <p>This paper reads the Nāṭyaśāstra's own deliberate inclusion of specifically involuntary responses within its technical vocabulary of abhinaya as textually significant: a tradition organising its performance theory around voluntary gesture alone could have confined itself to āṅgikābhinaya's own controllable postures; the explicit documented naming of sāttvikābhinaya as a fourth, distinct branch treats the actor's own trained capacity to produce genuine involuntary physiological response, rather than to merely simulate its outward appearance, as itself a documented technical skill.</p>
+  </div>
+  <div class="subsec">
+    <h3>9.3 <span class="tag">The Documented Tension This Raises, and How the Tradition Resolves It</span></h3>
+    <p>This paper flags a documented tension this section's own claim raises directly: if sāttvika responses are involuntary by definition, how can they be trained rather than merely occurring or not occurring unpredictably? Abhinavagupta's own commentarial tradition, examined further in Section XVI, is documented to resolve this tension by treating the actor's own sustained absorption in a role's determinants (vibhāva) as itself the trainable element — the actor cultivates the conditions under which genuine sāttvika response reliably arises, rather than directly willing the involuntary response itself, a documented distinction this paper reads as analogous to a musician training breath-control to reliably produce, rather than directly willing, a specific vocal resonance.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION X ============ -->
+<section class="roman" id="sec-10">
+  <span class="num">X.</span>
+  <h2>The Psychosomatic Geometry of Āṅgikābhinaya</h2>
+  <div class="subsec">
+    <h3>10.1 <span class="tag">Āṅgikābhinaya Defined</span></h3>
+    <p>Āṅgikābhinaya, the branch of abhinaya using the body's own limbs and postures, is documented in the Nāṭyaśāstra's own dedicated chapters to be organised through a precise, named technical vocabulary — cārīs (single-leg movement units), maṇḍalas (combinations of cārīs), and the karaṇas this sequence's own Part XI will document in full — each specified with documented positional precision rather than left to a performer's own improvisation.</p>
+  </div>
+  <div class="subsec">
+    <h3>10.2 <span class="tag">Geometry as a Documented Technical Feature Rather Than This Paper's Own Metaphor</span></h3>
+    <p>This paper notes that "geometric" is not merely this paper's own descriptive metaphor: the Nāṭyaśāstra's own documented specifications for cārī and karaṇa positioning are given with the kind of precise angular and positional detail — the specific relationship between hand, foot, hip, and gaze — that later scholarship has repeatedly described as approaching a technical notation system, a documented precision this paper reads as the textual basis for treating āṅgikābhinaya's own vocabulary as a genuinely codified system rather than as loosely patterned convention.</p>
+  </div>
+  <div class="subsec">
+    <h3>10.3 <span class="tag">Why This Paper Reads Codified Posture as Amplifying Rather Than Suppressing Emotional Content</span></h3>
+    <p>This paper argues that āṅgikābhinaya's own documented codification functions to amplify rather than to constrain emotional expression, on the ground that a precisely specified vocabulary of postures is documented to allow the trained sahṛdaya to recognise a specific determinant or consequent immediately and without ambiguity — codification, on this reading, functions analogously to Section 4.3's own varṇa-sphoṭa-to-vākya-sphoṭa structure from Part One: a fixed vocabulary of units enables, rather than obstructs, the instantaneous unitary cognition this paper's Section III has already argued rasa itself requires.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XI ============ -->
+<section class="roman" id="sec-11">
+  <span class="num">XI.</span>
+  <h2>The Eye as the Seat of Rasa: Dṛṣṭi-Bheda</h2>
+  <div class="subsec">
+    <h3>11.1 <span class="tag">Dṛṣṭi-Bheda Defined</span></h3>
+    <p>The Nāṭyaśāstra documents a detailed taxonomy of dṛṣṭis (eye movements and gazes) — among them kāntā (loving), bhayānakā (fearful), karuṇā (compassionate), and vismayavatī (wondering) — each specified as the particular ocular expression proper to a specific emotional register, documented at a level of technical detail comparable to āṅgikābhinaya's own postural vocabulary.</p>
+  </div>
+  <div class="subsec">
+    <h3>11.2 <span class="tag">Why the Eye Is Documented as Primary Among the Body's Instruments</span></h3>
+    <p>This paper reads later commentarial and pedagogical tradition's own frequently repeated formula — that where the hand goes, the eyes follow, and where the eyes go, the mind follows, and where the mind goes, rasa follows — as documenting the eye's own specific claim to primacy within āṅgikābhinaya's own wider vocabulary: the eye is treated, on this formula's own logic, as the specific physical location where a performer's own internal absorption (this paper's own performer-side paśyantī, Section 2.1) becomes externally, vaikharī-level legible to the sahṛdaya before any other bodily instrument completes that transmission.</p>
+  </div>
+  <div class="subsec">
+    <h3>11.3 <span class="tag">A Documented Qualification on This Formula's Own Source</span></h3>
+    <p>This paper notes, consistent with this series' evidentiary care, that the specific hand-eye-mind-rasa formula is documented most directly in later pedagogical tradition rather than verbatim in the Nāṭyaśāstra's own sixth chapter itself; this paper treats the formula as a documented later commentarial and pedagogical crystallisation of a principle the Nāṭyaśāstra's own dṛṣṭi-taxonomy already implies structurally, rather than as a claim this paper attributes directly to Bharata's own root text.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XII ============ -->
+<section class="roman" id="sec-12">
+  <span class="num">XII.</span>
+  <h2>Mudrās as Corporeal Language</h2>
+  <div class="subsec">
+    <h3>12.1 <span class="tag">Hasta-Mudrā Defined</span></h3>
+    <p>The Nāṭyaśāstra documents an extensive vocabulary of hand gestures (hastas or mudrās), including single-hand (asaṃyuta) and combined double-hand (saṃyuta) forms, each documented with a specified set of denotable meanings ranging across concrete objects, actions, and abstract states — a vocabulary later systematised further in dedicated technical manuals this sequence's own Part XI will examine in relation to the karaṇas specifically.</p>
+  </div>
+  <div class="subsec">
+    <h3>12.2 <span class="tag">Why This Paper Reads Mudrā as Genuinely Linguistic Rather Than Merely Illustrative</span></h3>
+    <p>This paper reads mudrā's own documented capacity to encode complex philosophical and narrative content without vocalisation — entire mythological episodes are documented to be conveyed through sustained sequences of hand-gesture alone in traditions this paper's Section XXIX examines directly — as evidence for treating mudrā as a genuinely linguistic system in its own right, satisfying this paper's own working criterion for vaikharī's aupacārika extension (Part One, Section 35.1): a fixed vocabulary of discrete, combinable units bearing stable, learnable meaning.</p>
+  </div>
+  <div class="subsec">
+    <h3>12.3 <span class="tag">A Documented Caution Against Overstating Mudrā's Independence From Vācikābhinaya</span></h3>
+    <p>This paper is careful to document that mudrā is not standardly presented, within the Nāṭyaśāstra's own text, as a fully independent language capable of replacing vācikābhinaya outright: mudrā is documented across the tradition's own dance-drama forms to function characteristically in close coordination with sung or recited text, elaborating and visually glossing vācikābhinaya's own content rather than substituting for it wholesale — a documented qualification this paper registers against a possible overstatement of mudrā's own autonomy.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XIII ============ -->
+<section class="roman" id="sec-13">
+  <span class="num">XIII.</span>
+  <h2>Ahāryābhinaya as Extended Corporeality</h2>
+  <div class="subsec">
+    <h3>13.1 <span class="tag">Ahāryābhinaya Defined</span></h3>
+    <p>Ahāryābhinaya, the fourth branch alongside āṅgika, vācika, and sāttvika, names costume, makeup, ornament, and staged properties, documented in the Nāṭyaśāstra's own chapters on staging as a technically specified domain in its own right, including detailed documented conventions for colour-coding a character's own moral and cosmic status.</p>
+  </div>
+  <div class="subsec">
+    <h3>13.2 <span class="tag">Why This Paper Reads Ahārya as Extending Rather Than Merely Decorating the Performer's Body</span></h3>
+    <p>This paper reads ahāryābhinaya's own documented function as extending the performer's own physical instrument rather than merely dressing it: a specific documented colour or mask is held to alter how the sahṛdaya's own eye (Section XI) processes a character's presence before any gesture or line is delivered, functioning, on this paper's reading, as a form of pre-linguistic vaikharī — externalised meaning legible prior to and independent of any specific spoken or gestural act.</p>
+  </div>
+  <div class="subsec">
+    <h3>13.3 <span class="tag">Closing This Paper's Second Block</span></h3>
+    <p>This paper closes its second thematic block by noting that Sections VIII–XIII have together documented rasa's own somatic mechanics across all four branches of abhinaya this sequence's Part Nine will examine in full technical detail: the Rasa-Sūtra's own conjunction-structure, sāttvikābhinaya's involuntary physiology, āṅgikābhinaya's geometric codification, dṛṣṭi-bheda's ocular primacy, mudrā's corporeal language, and ahārya's extended corporeality — establishing rasa's arising as a documented whole-body, whole-instrument phenomenon before this paper's third block turns to the audience's own side of that transaction.</p>
+  </div>
+</section>
+
+<div class="block-divider" id="sec-block3"><span class="diamond">❖</span><div class="line"></div><span style="font-family:var(--font-display); font-size:.75rem; letter-spacing:.15em; text-transform:uppercase;">Block III · The Epistemology of the Audience</span><div class="line"></div><span class="diamond">❖</span></div>
+
+<!-- ============ SECTION XIV ============ -->
+<section class="roman" id="sec-14">
+  <span class="num">XIV.</span>
+  <h2>Sādhāraṇīkaraṇa as Ego Dissolution</h2>
+  <div class="subsec">
+    <h3>14.1 <span class="tag">Sādhāraṇīkaraṇa Defined</span></h3>
+    <p>Sādhāraṇīkaraṇa (universalisation), documented most systematically in Abhinavagupta's own Abhinavabhārati commentary, names the cognitive process by which a spectator's own personal, situationally bound emotional response is transformed into an impersonal, universalised aesthetic experience — the sahṛdaya is documented to experience karuṇa (compassion) evoked by a specific staged grief without that experience being anchored to the sahṛdaya's own particular, biographically located sorrows.</p>
+  </div>
+  <div class="subsec">
+    <h3>14.2 <span class="tag">Why This Paper Reads Universalisation as a Documented Cognitive Shift Rather Than Mere Distance</span></h3>
+    <p>This paper is careful to distinguish sādhāraṇīkaraṇa from simple emotional distancing: the sahṛdaya is documented to feel the evoked emotion genuinely and fully, not at a remove, but without the ordinary self-referential entanglements — desire to act, personal stake in outcome — that accompany the same emotion (laukika bhāva, ordinary worldly emotion) in a spectator's own actual life, a documented distinction between rasa and ordinary emotion this paper's own Section XVII examines further.</p>
+  </div>
+  <div class="subsec">
+    <h3>14.3 <span class="tag">Sādhāraṇīkaraṇa Read as Vaikharī's Own Documented Return Journey</span></h3>
+    <p>This paper reads sādhāraṇīkaraṇa as completing a documented circuit this sequence has traced since Part One: vaikharī, externalised through the performer's own body (this paper's Sections II–XIII), is here documented to produce in the sahṛdaya a cognitive state this paper reads as structurally comparable to paśyantī — undifferentiated, impersonal, prior to the ordinary ego-bound differentiation of laukika emotion — making the theatrical event, on this paper's own proposed reading, a documented circuit from paśyantī through vaikharī and back toward a paśyantī-like universalised cognition in the spectator.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XV ============ -->
+<section class="roman" id="sec-15">
+  <span class="num">XV.</span>
+  <h2>The Sahṛdaya's Somatic Mirroring</h2>
+  <div class="subsec">
+    <h3>15.1 <span class="tag">Sahṛdaya Defined</span></h3>
+    <p>Sahṛdaya ("of similar heart"), documented across Sanskrit poetics generally and not confined to dramatic theory alone, names the qualified spectator whose own trained aesthetic sensibility is documented as a necessary precondition for rasa's own successful arising — the Nāṭyaśāstra's own tradition documents rasa as failing to arise, or arising only incompletely, for a spectator lacking this documented qualification.</p>
+  </div>
+  <div class="subsec">
+    <h3>15.2 <span class="tag">The Documented Somatic Register of the Sahṛdaya's Own Response</span></h3>
+    <p>This paper reads later commentarial description of the sahṛdaya's own response — descriptions this paper's Section XVIII examines in the specific vocabulary of citta-druti (melting of mind) — as documenting a genuinely physical, not merely cognitive or interpretive, register of response: the qualified spectator is documented to experience horripilation, tears, or absorbed stillness in direct response to a performer's own sāttvikābhinaya (Section IX), a documented physiological mirroring this paper reads as the audience-side completion of the somatic circuit Section XIV has proposed.</p>
+  </div>
+  <div class="subsec">
+    <h3>15.3 <span class="tag">Why This Paper Flags but Does Not Resolve the Mirror-Neuron Question Here</span></h3>
+    <p>This paper flags, without resolving here, that this documented somatic mirroring has become a specific site of contemporary neuroscientific comparison, examined directly and with appropriate bracketing in this paper's own Section XXVI and Tab Panel I, and defers the technical question of mirror-neuron mechanisms specifically to that later, more appropriately contextualised treatment.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XVI ============ -->
+<section class="roman" id="sec-16">
+  <span class="num">XVI.</span>
+  <h2>Abhinavagupta's Intersubjectivity: Bodies Witnessing Bodies</h2>
+  <div class="subsec">
+    <h3>16.1 <span class="tag">Abhinavagupta's Documented Historical Position</span></h3>
+    <p>Abhinavagupta, standardly dated by modern scholarship to approximately the tenth to eleventh centuries CE, is documented as the single most influential systematiser of rasa theory, whose Abhinavabhārati commentary on the Nāṭyaśāstra and whose separate Locana commentary on Ānandavardhana's dhvani theory together supply the documented framework through which this paper's own Sections III–IV, XIV, and this section are principally read.</p>
+  </div>
+  <div class="subsec">
+    <h3>16.2 <span class="tag">Sādhāraṇa as Shared Cognitive Space</span></h3>
+    <p>This paper reads Abhinavagupta's own documented treatment of sādhāraṇa (the shared or common ground of aesthetic experience) as extending Section XIV's own universalisation claim into an explicitly intersubjective register: the sahṛdaya's own universalised experience of rasa is documented to be, in principle, the same experience any other qualified sahṛdaya undergoes in witnessing the same performance, generating a documented shared cognitive space this paper reads as intersubjectivity in a technically precise, not merely loosely comparative, sense.</p>
+  </div>
+  <div class="subsec">
+    <h3>16.3 <span class="tag">Why This Paper Reads This as Bodies Witnessing Bodies Rather Than Minds Witnessing Minds</span></h3>
+    <p>This paper reads Abhinavagupta's own documented emphasis on the actor's physically enacted determinants and consequents (this paper's Sections VIII–XIII) as grounding sādhāraṇa specifically in embodied, physically mediated transmission rather than in purely conceptual understanding: the shared cognitive space Abhinavagupta documents is proposed by this paper to be reached specifically through the sahṛdaya's own body registering the performer's own body (Section 15.2), making the theatrical event's own documented intersubjectivity a somatic rather than purely intellectual achievement.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XVII ============ -->
+<section class="roman" id="sec-17">
+  <span class="num">XVII.</span>
+  <h2>Rasa-Āsvāda as Spiritual Taste</h2>
+  <div class="subsec">
+    <h3>17.1 <span class="tag">Āsvāda Defined</span></h3>
+    <p>Āsvāda ("tasting"), the specific documented metaphor from which rasa ("flavour," "essence," "taste") itself derives, is documented across the tradition's own aesthetic vocabulary as the operative term for how the sahṛdaya is held to apprehend rasa — not through discursive analysis but through something the tradition's own vocabulary treats as continuous with the direct, immediate, and pleasurable apprehension ordinary taste supplies.</p>
+  </div>
+  <div class="subsec">
+    <h3>17.2 <span class="tag">The Documented Comparison to Brahmāsvāda</span></h3>
+    <p>Abhinavagupta's own commentarial tradition is documented to draw an explicit comparison between rasa-āsvāda and brahmāsvāda (the "tasting" of Brahman itself in advanced meditative or liberated states), holding rasa's own aesthetic bliss (ānanda) to be, while not identical with, structurally akin to the bliss documented in Advaita Vedānta's own treatment of liberated experience — a documented comparison this paper reads as the single clearest textual point of contact between this sequence's own Vedāntic material (Part One, Section XI) and its aesthetic material.</p>
+  </div>
+  <div class="subsec">
+    <h3>17.3 <span class="tag">Why This Paper Registers Rather Than Collapses the Rasa/Brahmāsvāda Comparison</span></h3>
+    <p>This paper notes, consistent with its own evidentiary care, that Abhinavagupta's own school documents rasa-āsvāda and brahmāsvāda as analogous rather than identical: rasa-āsvāda is documented as still occurring within, rather than beyond, the framework of a specific staged performance and its specific evoked emotion, while brahmāsvāda is documented as unconditioned by any such particular content — a documented distinction this paper registers to avoid overstating the comparison into a claim of strict equivalence.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XVIII ============ -->
+<section class="roman" id="sec-18">
+  <span class="num">XVIII.</span>
+  <h2>Citta-Druti: The Melting of Mind</h2>
+  <div class="subsec">
+    <h3>18.1 <span class="tag">Citta-Druti Defined</span></h3>
+    <p>Citta-druti (melting or liquefaction of mind), documented in later aesthetic-theoretical vocabulary describing the sahṛdaya's own psychological state during successful rasa-apprehension, names a documented softening or dissolution of the ordinary mind's ego-bound rigidity, functioning as the specific phenomenological texture Section XIV's own sādhāraṇīkaraṇa is held to produce from the inside.</p>
+  </div>
+  <div class="subsec">
+    <h3>18.2 <span class="tag">Why This Paper Reads Citta-Druti as a Documented Bridge Term Between Aesthetic and Yogic Vocabulary</span></h3>
+    <p>This paper reads citta-druti's own use of citta — the same technical term Series B's own Part Six, cited in Part One's Section 37.1, documents extensively in relation to Yoga-Śāstra's own citta-vṛtti-nirodha (the stilling of mental modifications) — as a documented terminological bridge this paper treats as significant: aesthetic theory and yogic theory are documented, through this shared vocabulary, to describe structurally related though not identical psychological achievements, the former a temporary, performance-bound melting, the latter a sustained, disciplined stilling.</p>
+  </div>
+  <div class="subsec">
+    <h3>18.3 <span class="tag">A Documented Caution Against Collapsing the Two</span></h3>
+    <p>This paper cautions against collapsing citta-druti into citta-vṛtti-nirodha outright: the former is documented as arising specifically in response to a staged aesthetic object and is understood traditionally to be temporary, dissolving with the performance's own end, while the latter is documented as a sustained yogic achievement pursued independently of any aesthetic occasion — a documented difference in both duration and dependency-structure this paper registers explicitly.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XIX ============ -->
+<section class="roman" id="sec-19">
+  <span class="num">XIX.</span>
+  <h2>The Cathartic Body: A Bracketed Comparison to Western Catharsis</h2>
+  <div class="subsec">
+    <h3>19.1 <span class="tag">Aristotelian Catharsis Restated Briefly</span></h3>
+    <p>Aristotle's own Poetics is documented to treat catharsis as tragedy's own proper effect: a purgation or purification of pity and fear specifically, achieved through witnessing tragic action, a documented account this paper treats at the introductory level appropriate to a strictly bracketed comparison rather than as requiring extended independent treatment here.</p>
+  </div>
+  <div class="subsec">
+    <h3>19.2 <span class="tag">The Documented Structural Parallel</span></h3>
+    <p>This paper documents a structural parallel available at the level of shared concern: both frameworks hold that witnessing staged emotional content produces, in a qualified spectator, some documented transformation of that spectator's own emotional state — purgation in the Aristotelian account, universalisation (sādhāraṇīkaraṇa) in the rasa account — rather than leaving the spectator's own emotional life untouched by the performance witnessed.</p>
+  </div>
+  <div class="subsec">
+    <h3>19.3 <span class="tag">The Documented Structural Difference, and Why This Paper Brackets Rather Than Merges the Two</span></h3>
+    <p>This paper documents a significant structural difference, however: catharsis is standardly documented as a purgative model, implying the spectator carries some prior excess of pity and fear that tragic witnessing reduces or discharges, while sādhāraṇīkaraṇa is documented as a universalising rather than purgative model, transforming the character of the emotion experienced (from personal, ego-bound laukika bhāva to impersonal rasa) rather than discharging a prior emotional excess — a documented structural difference this paper reads as sufficient to treat the two frameworks as genuinely distinct rather than as two names for a single underlying mechanism, consistent with this series' comparative-bracketing practice established in Part One's own Tab Panel IV.</p>
+
+    <table class="data">
+      <caption>Catharsis and Sādhāraṇīkaraṇa Compared, Bracketed</caption>
+      <tr><th>Dimension</th><th>Aristotelian Catharsis</th><th>Sādhāraṇīkaraṇa</th></tr>
+      <tr><td>Documented Model</td><td>Purgative — discharge of prior excess</td><td>Universalising — transformation of emotion's own character</td></tr>
+      <tr><td>Documented Scope</td><td>Pity and fear specifically, within tragedy</td><td>All eight or nine documented rasas</td></tr>
+      <tr><td>Documented Audience Precondition</td><td>Not standardly specified as a trained qualification</td><td>Sahṛdaya's own trained aesthetic qualification, documented as necessary</td></tr>
+    </table>
+  </div>
+
+  <div class="pull-quote">The audience does not merely watch the descent. The audience's own body completes it.</div>
+</section>
+
+<div class="block-divider" id="sec-block4"><span class="diamond">❖</span><div class="line"></div><span style="font-family:var(--font-display); font-size:.75rem; letter-spacing:.15em; text-transform:uppercase;">Block IV · Ritual, Cosmos, and Textual Genesis</span><div class="line"></div><span class="diamond">❖</span></div>
+
+<!-- ============ SECTION XX ============ -->
+<section class="roman" id="sec-20">
+  <span class="num">XX.</span>
+  <h2>The Fifth Veda: Democratising Spiritual Knowledge Through the Body</h2>
+  <div class="subsec">
+    <h3>20.1 <span class="tag">The Documented Fifth Veda Claim</span></h3>
+    <p>The Nāṭyaśāstra's own first chapter documents a mythic account, examined further in Section XXIV, in which the Nāṭyaveda (the "veda of drama") is presented as a fifth Veda specifically composed to be accessible to those the account describes as excluded from direct access to the existing four — a documented self-positioning this paper reads as the text's own explicit claim to Vedic authority extended through a new, sensorily rather than purely verbally mediated form.</p>
+  </div>
+  <div class="subsec">
+    <h3>20.2 <span class="tag">Why This Paper Reads the Fifth Veda Claim as Structurally Consistent With Section VI's Mantra Comparison</span></h3>
+    <p>This paper reads the Fifth Veda claim as directly continuous with Section VI's own documented mantra/nāṭya-śabda comparison: if the Nāṭyaśāstra explicitly claims Vedic authority for its own embodied, performative transmission of knowledge otherwise carried in verbal, recited form, then this paper's own wider genealogical claim — that rasa is vaikharī's own extension into full embodiment — gains, on this paper's reading, direct textual warrant from the tradition's own self-understanding rather than resting solely on this paper's own structural-synthetic proposal.</p>
+  </div>
+  <div class="subsec">
+    <h3>20.3 <span class="tag">A Documented Qualification on "Democratisation"</span></h3>
+    <p>This paper is careful to register a documented historical qualification: while the Nāṭyaśāstra's own mythic frame presents dramatic performance as newly accessible to those excluded from the other four Vedas' own direct study, standard modern scholarship documents that access to formal classical theatrical training and performance remained, for much of its documented history, itself governed by its own social and institutional constraints — a documented complexity this paper registers rather than smooths over, consistent with this section's own evenhandedness commitment.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XXI ============ -->
+<section class="roman" id="sec-21">
+  <span class="num">XXI.</span>
+  <h2>The Jarjara: Indra's Banner as Axis Mundi</h2>
+  <div class="subsec">
+    <h3>21.1 <span class="tag">The Jarjara Defined</span></h3>
+    <p>The jarjara, documented in the Nāṭyaśāstra's own account of theatrical origins as a ritually consecrated staff or banner associated with Indra, is documented to be ritually installed and worshipped as part of the pūrvaraṅga (Section XXII) preliminaries, functioning as a protective, sanctifying presence over the performance space.</p>
+  </div>
+  <div class="subsec">
+    <h3>21.2 <span class="tag">Why This Paper Reads the Jarjara as a Documented Axis Mundi</span></h3>
+    <p>This paper reads the jarjara's own documented function — a fixed, ritually consecrated vertical object marking and protecting a bounded sacred space within which extraordinary transformation (the actor's own transformation into character, examined throughout this paper's Block II) is held to occur safely — as structurally consistent with the general comparative-religious category of axis mundi, a documented structural parallel this paper offers with the same explicit bracketing this series applies throughout to cross-traditional comparison, rather than as a claim of direct historical borrowing.</p>
+  </div>
+  <div class="subsec">
+    <h3>21.3 <span class="tag">Why the Jarjara Matters for This Paper's Own Argument Specifically</span></h3>
+    <p>This paper reads the jarjara's own documented ritual installation as further evidence, alongside Section XX's Fifth Veda claim, that the tradition itself treats the theatrical event as ritually consequential rather than as secular entertainment merely borrowing sacred vocabulary — a documented framing this paper reads as directly supporting this sequence's own wider genealogical claim that rasa's arising is continuous with, rather than merely analogous to, the sacred sound-technologies this sequence's earlier parts have documented.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XXII ============ -->
+<section class="roman" id="sec-22">
+  <span class="num">XXII.</span>
+  <h2>Pūrvaraṅga: The Ritual Purification of the Stage</h2>
+  <div class="subsec">
+    <h3>22.1 <span class="tag">Pūrvaraṅga Defined</span></h3>
+    <p>Pūrvaraṅga, documented in the Nāṭyaśāstra's own fifth chapter as an extended sequence of preliminary rites — including music, dance, and specific ritual utterances — performed before a play's own dramatic action begins, is documented as itself a technically elaborate ritual procedure rather than a brief formality.</p>
+  </div>
+  <div class="subsec">
+    <h3>22.2 <span class="tag">Why This Paper Reads Pūrvaraṅga as Bodily Rather Than Purely Verbal Purification</span></h3>
+    <p>This paper reads pūrvaraṅga's own documented combination of instrumental music, danced movement, and recited or sung sound as directly continuous with this paper's own Block I material (Sections II–VII): the stage is documented to be purified specifically through a combination of vaikharī's own vocal and somatic instruments working together, rather than through verbal recitation alone, a documented method this paper reads as consistent with treating the entire performance space, not merely the play's own subsequent dramatic content, as itself a site requiring and receiving embodied śabda's own purifying operation.</p>
+  </div>
+  <div class="subsec">
+    <h3>22.3 <span class="tag">Pūrvaraṅga's Documented Relationship to Section XX's Fifth Veda Claim</span></h3>
+    <p>This paper reads pūrvaraṅga's own documented ritual elaborateness as further textual support for Section 20.1's own Fifth Veda claim: a tradition that precedes its own dramatic content with an extended, technically specified purification rite is documented, on this paper's reading, to treat the subsequent performance as operating within a genuinely sacralised frame rather than as secular entertainment merely preceded by a token ceremonial gesture.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XXIII ============ -->
+<section class="roman" id="sec-23">
+  <span class="num">XXIII.</span>
+  <h2>Nāṭyamaṇḍapa: Theater Architecture as Acoustic Amplifier</h2>
+  <div class="subsec">
+    <h3>23.1 <span class="tag">The Documented Architectural Specifications</span></h3>
+    <p>The Nāṭyaśāstra's own second chapter documents detailed specifications for theater construction, including documented proportional relationships between the stage's own dimensions and the auditorium, and documented guidance on materials and orientation — specifications this paper reads, consistent with Section 7.2's own claim, as practically oriented toward correct sound transmission rather than offered as arbitrary or merely symbolic convention.</p>
+  </div>
+  <div class="subsec">
+    <h3>23.2 <span class="tag">Why This Paper Reads the Nāṭyamaṇḍapa as Vaikharī's Own Architectural Extension</span></h3>
+    <p>This paper reads the theater's own documented architectural design as a further, structural instance of vaikharī's aupacārika extension (Part One, Section 35.1): if gesture and costume (this paper's Sections X–XIII) already extend vaikharī beyond the voice alone, the theater's own physical structure, designed specifically to carry and amplify that embodied sound and gesture to a distant sahṛdaya, is documented, on this paper's reading, as a further, architectural instance of the same extension, rather than as a separate practical consideration standing apart from this sequence's own genealogical claim.</p>
+  </div>
+  <div class="subsec">
+    <h3>23.3 <span class="tag">A Documented Caution on Reconstructive Certainty</span></h3>
+    <p>This paper notes, consistent with standard scholarship, that no fully intact physical nāṭyamaṇḍapa surviving directly from the Nāṭyaśāstra's own documented period of composition is known to this paper, and that modern reconstructions of the text's own architectural specifications remain, to a documented degree, interpretive rather than archaeologically verified in every particular — a documented limit this paper registers explicitly rather than overstating architectural certainty.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XXIV ============ -->
+<section class="roman" id="sec-24">
+  <span class="num">XXIV.</span>
+  <h2>Mythic Genesis of Rasa: Brahmā's Distillation of the Four Vedas</h2>
+  <div class="subsec">
+    <h3>24.1 <span class="tag">The Documented Mythic Account</span></h3>
+    <p>The Nāṭyaśāstra's own first chapter documents a mythic origin narrative in which Brahmā, petitioned by Indra and the other gods for a form of entertainment and instruction accessible to all four social classes without restriction, composes the Nāṭyaveda by drawing recitation from the Ṛgveda, song from the Sāmaveda, abhinaya from the Yajurveda, and rasa from the Atharvaveda.</p>
+  </div>
+  <div class="subsec">
+    <h3>24.2 <span class="tag">Why This Paper Reads the Four-Source Distillation as Textually Significant</span></h3>
+    <p>This paper reads the specific documented assignment of rasa to the Atharvaveda as significant for this sequence's own wider argument: the Atharvaveda is documented, in its own separate tradition, as the Veda most closely associated with practical, embodied, and ritually applied technique (including healing and other directly efficacious rites) rather than with the more purely liturgical recitation the Ṛgveda and Sāmaveda are documented to carry — a documented source-assignment this paper reads as consistent with treating rasa itself as embodied, practically operative sound rather than as abstract aesthetic theory alone.</p>
+  </div>
+  <div class="subsec">
+    <h3>24.3 <span class="tag">Why This Paper Treats the Myth as Documented Self-Understanding Rather Than Historical Claim</span></h3>
+    <p>This paper treats this origin narrative as documenting the tradition's own self-understanding of rasa's own sources and authority, rather than as a historical claim this paper evaluates for literal accuracy — consistent with this series' own established practice, already applied to the Vāk-Sūkta in Part One's Section XV, of reading mythic material as significant textual self-positioning regardless of its own historical facticity.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XXV ============ -->
+<section class="roman" id="sec-25">
+  <span class="num">XXV.</span>
+  <h2>The Tāṇḍava-Lāsya Binary: Cosmic Structure and Fluid Embodiment</h2>
+  <div class="subsec">
+    <h3>25.1 <span class="tag">Tāṇḍava and Lāsya Defined</span></h3>
+    <p>Tāṇḍava, documented as the vigorous, structurally emphatic mode of dance associated with Śiva, and lāsya, documented as the gentler, more fluid mode associated with Pārvatī, are documented across the Nāṭyaśāstra's own tradition and its later elaborations as a paired binary structuring the classical dance repertoire's own range of expressive registers.</p>
+  </div>
+  <div class="subsec">
+    <h3>25.2 <span class="tag">Why This Paper Reads the Binary as Preventing Rasa's Own Stagnation</span></h3>
+    <p>This paper reads the documented cultivation of both tāṇḍava and lāsya within a single performer's own trained repertoire, rather than specialisation in one mode exclusively, as functioning to keep the full documented range of rasas (Section 8.3's table) available to performance: a repertoire confined to tāṇḍava's own vigorous register would structurally favour vīra and raudra at the expense of śṛṅgāra and karuṇa, and vice versa for lāsya alone, making the documented dual cultivation this section examines a structural precondition, on this paper's reading, for rasa's own full range remaining performable.</p>
+  </div>
+  <div class="subsec">
+    <h3>25.3 <span class="tag">Closing This Paper's Fourth Block</span></h3>
+    <p>This paper closes its fourth thematic block by noting that Sections XX–XXV have together documented the Nāṭyaśāstra's own ritual and cosmic frame: its Fifth Veda self-positioning, the jarjara's protective consecration, pūrvaraṅga's purificatory elaborateness, the theater's own acoustic architecture, rasa's own mythic four-source genesis, and the tāṇḍava-lāsya binary's structural function — establishing, together with this paper's first two blocks, that rasa's arising is documented as embedded within a genuinely sacralised, architecturally and ritually supported frame rather than as a free-standing aesthetic theory considered apart from its own documented ritual context.</p>
+  </div>
+</section>
+
+<div class="block-divider" id="sec-block5"><span class="diamond">❖</span><div class="line"></div><span style="font-family:var(--font-display); font-size:.75rem; letter-spacing:.15em; text-transform:uppercase;">Block V · Contemporary Intersections &amp; Comparative Frameworks</span><div class="line"></div><span class="diamond">❖</span></div>
+
+<!-- ============ SECTION XXVI ============ -->
+<section class="roman" id="sec-26">
+  <span class="num">XXVI.</span>
+  <h2>Neuroaesthetics of Rasa: Mirror Neurons and Sādhāraṇīkaraṇa, Bracketed</h2>
+  <div class="subsec">
+    <h3>26.1 <span class="tag">The Documented Contemporary Comparison</span></h3>
+    <p>Contemporary neuroaesthetic scholarship has documented mirror-neuron systems — neural populations activated both when an organism performs an action and when it observes the same action performed by another — as a candidate biological mechanism for various forms of documented empathic and observational resonance, a body of research this paper treats at the introductory level appropriate to bracketed comparison.</p>
+  </div>
+  <div class="subsec">
+    <h3>26.2 <span class="tag">Why This Paper Brackets Rather Than Asserts a Mechanism</span></h3>
+    <p>This paper is careful to document that no direct, methodologically established neuroscientific study specifically testing sādhāraṇīkaraṇa or rasa-cognition against mirror-neuron activation is known to this paper; the comparison this section offers is accordingly a structural-synthetic proposal <span class="evid-tag syn">synthetic</span> — noting only that both frameworks document some form of embodied resonance between observer and observed — rather than a claim that mirror-neuron research has itself validated or explained rasa theory's own classical mechanism.</p>
+  </div>
+  <div class="subsec">
+    <h3>26.3 <span class="tag">A Documented Caution on Mirror-Neuron Overreach</span></h3>
+    <p>This paper notes further that mirror-neuron research itself remains, within contemporary neuroscience, an actively debated field regarding the precise scope and explanatory power properly attributable to mirror-neuron systems in humans specifically, a documented scientific caution this paper registers to avoid overstating the comparison's own evidentiary weight in either direction.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XXVII ============ -->
+<section class="roman" id="sec-27">
+  <span class="num">XXVII.</span>
+  <h2>Phenomenology of the Performing Body: Merleau-Ponty, Bracketed</h2>
+  <div class="subsec">
+    <h3>27.1 <span class="tag">The Lived Body, Restated Briefly</span></h3>
+    <p>Maurice Merleau-Ponty's own phenomenological account of the lived body (corps vécu) is documented to treat the body not as an object among other objects but as the very medium through which a subject's own perceptual and expressive access to the world is constituted — a documented philosophical position this paper treats at the introductory level appropriate to bracketed comparison.</p>
+  </div>
+  <div class="subsec">
+    <h3>27.2 <span class="tag">The Documented Structural Parallel to Bharata's Own Embodied Theory</span></h3>
+    <p>This paper documents a structural parallel available at the level of shared concern: both frameworks refuse a strict separation between a performer's own inner emotional state and its outward bodily expression — Merleau-Ponty's own account of expression as constitutive rather than merely representational of meaning, and the Nāṭyaśāstra's own documented treatment of sāttvikābhinaya (Section IX) as involuntary bodily truth rather than externally added illustration of a separately existing inner state, converge, on this paper's reading, in refusing any strict mind-body dualism regarding expressive meaning.</p>
+  </div>
+  <div class="subsec">
+    <h3>27.3 <span class="tag">Why This Paper Brackets This Comparison Explicitly</span></h3>
+    <p>This paper offers this comparison strictly at the structural level, consistent with this series' recurring caution against collapsing independently developed traditions into a single category: Merleau-Ponty's own twentieth-century European phenomenological tradition developed independently of, and without documented direct engagement with, Sanskrit aesthetic theory, and this paper's own comparison claims no historical connection between the two, only a documented structural resemblance useful for making Bharata's own embodied theory legible to readers trained primarily in Western philosophical vocabulary.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XXVIII ============ -->
+<section class="roman" id="sec-28">
+  <span class="num">XXVIII.</span>
+  <h2>Affect Theory and Rasa: Structured Codification Versus Open Affect</h2>
+  <div class="subsec">
+    <h3>28.1 <span class="tag">Contemporary Affect Theory Restated Briefly</span></h3>
+    <p>Contemporary Western affect theory, associated with a range of documented late-twentieth and early-twenty-first century scholars, generally treats affect as a pre-personal, often deliberately under-specified intensity distinct from, and prior to, the named, discretely categorised emotions of ordinary psychological vocabulary.</p>
+  </div>
+  <div class="subsec">
+    <h3>28.2 <span class="tag">The Documented Point of Sharp Divergence</span></h3>
+    <p>This paper documents a sharp and instructive divergence here rather than a further parallel: rasa theory's own documented eight or nine-fold taxonomy (Section 8.3) is a maximally codified system, naming specific, discretely bounded aesthetic states each tied to a specific sthāyibhāva, standing in near-direct methodological opposition to affect theory's own documented preference for resisting premature categorisation of felt intensity.</p>
+  </div>
+  <div class="subsec">
+    <h3>28.3 <span class="tag">Why This Paper Reads the Divergence as Itself Instructive</span></h3>
+    <p>This paper reads this documented divergence as itself analytically productive rather than as a simple failure of comparison: rasa theory's own codification is documented, across this paper's Sections VIII and X, to function specifically to enable the instantaneous, unambiguous recognition Section 3.1's sphoṭa-parallel requires, while affect theory's own resistance to codification is documented to serve a different, contemporary theoretical purpose (resisting what its own proponents document as premature ideological closure around named emotional categories) — two frameworks, on this paper's reading, optimised for genuinely different documented ends rather than competing accounts of a single shared phenomenon.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XXIX ============ -->
+<section class="roman" id="sec-29">
+  <span class="num">XXIX.</span>
+  <h2>Kūṭiyāṭṭam and Kinetic Textuality</h2>
+  <div class="subsec">
+    <h3>29.1 <span class="tag">Kūṭiyāṭṭam Defined</span></h3>
+    <p>Kūṭiyāṭṭam, documented as Kerala's own Sanskrit theater tradition and recognised by UNESCO as a documented Masterpiece of the Oral and Intangible Heritage of Humanity, is documented as the only surviving performance tradition preserving continuous, living practice of Sanskrit dramatic staging in a form its own practitioners trace directly to Nāṭyaśāstra-derived technical method.</p>
+  </div>
+  <div class="subsec">
+    <h3>29.2 <span class="tag">Why This Paper Reads Kūṭiyāṭṭam as Documented Living Evidence for This Paper's Own Genealogical Claim</span></h3>
+    <p>This paper reads Kūṭiyāṭṭam's own documented practice — extraordinarily extended performance timescales, in which a single verse's own full elaboration through nētrābhinaya (eye-work) and hastābhinaya (hand-work) can occupy hours the printed text itself would require only moments to read aloud — as direct living evidence for this paper's own wider claim that rasa constitutes vaikharī's own furthest embodied elaboration: a single Sanskrit vākya-sphoṭa (Part One, Section 4.3), on this paper's reading, is documented in Kūṭiyāṭṭam practice to generate an extended physical exposition whose scale vastly exceeds the verse's own spoken duration, making the text itself, in this specific tradition's documented practice, kinetic rather than merely recited.</p>
+  </div>
+  <div class="subsec">
+    <h3>29.3 <span class="tag">A Documented Note on Kūṭiyāṭṭam's Own Vulnerable Transmission</span></h3>
+    <p>This paper notes, consistent with UNESCO's own documented assessment, that Kūṭiyāṭṭam's own continued living transmission has been documented as historically vulnerable, dependent on a comparatively small number of hereditary practicing families and institutions, a documented circumstance this paper registers as relevant context for treating this tradition's own surviving practice as valuable direct evidence rather than as an inexhaustible or self-sustaining resource.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XXX ============ -->
+<section class="roman" id="sec-30">
+  <span class="num">XXX.</span>
+  <h2>De-Colonising Somatics: Challenging Text-Only Analysis</h2>
+  <div class="subsec">
+    <h3>30.1 <span class="tag">The Documented Historiographical Critique</span></h3>
+    <p>A documented body of contemporary scholarship, working broadly within decolonial and postcolonial critical method, has argued that colonial-era and early Western academic engagement with Indian performance traditions characteristically privileged textual analysis of the Nāṭyaśāstra as a literary document over direct engagement with its own living embodied practice traditions, a documented historiographical pattern this paper registers rather than adjudicates in full.</p>
+  </div>
+  <div class="subsec">
+    <h3>30.2 <span class="tag">Why This Paper Reads Its Own Genealogical Project as Responsive to This Critique</span></h3>
+    <p>This paper reads its own wider genealogical claim — that the Nāṭyaśāstra's own textual theory of rasa is best understood as vaikharī's embodied elaboration rather than as an abstract literary-critical system — as structurally aligned with, though not directly derived from, this documented decolonial critique's own methodological point: treating rasa as fundamentally a phenomenon of the trained body (this paper's Block II) rather than of textual analysis alone is documented, on this paper's own proposal, to require exactly the kind of embodied, practice-attentive method this critique documents as historically underweighted.</p>
+  </div>
+  <div class="subsec">
+    <h3>30.3 <span class="tag">A Documented Caution on This Paper's Own Method</span></h3>
+    <p>This paper notes explicitly, with the self-accounting this series applies throughout its own methodological appendices, that this paper itself remains a text-based document produced through textual and secondary scholarly sources rather than through direct embodied training or fieldwork, and registers this as a documented limitation of its own method rather than claiming this paper itself fully embodies the corrective this section documents others as calling for.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XXXI ============ -->
+<section class="roman" id="sec-31">
+  <span class="num">XXXI.</span>
+  <h2>The Digital Rasa Experience: Screens, Virtual Reality, and This Paper's Own Documented Limit Case</h2>
+  <div class="subsec">
+    <h3>31.1 <span class="tag">The Documented Contemporary Question</span></h3>
+    <p>Contemporary discussion has raised a documented open question this paper registers without claiming to resolve: whether rasa, as this paper's own Sections VIII–XIX have documented it — dependent on a physically co-present performer's own trained body and a physically co-present sahṛdaya's own somatic mirroring (Section XV) — can arise, in any documented full sense, through mediated transmission via recorded video, screens, or emerging virtual and artificial-intelligence-mediated performance technologies.</p>
+  </div>
+  <div class="subsec">
+    <h3>31.2 <span class="tag">Why This Paper Reads Mediation as a Genuine Rather Than Merely Technical Challenge to Its Own Argument</span></h3>
+    <p>This paper reads this question as bearing directly and seriously on its own wider genealogical claim: if rasa's own documented arising depends specifically on the somatic, physically co-present mirroring this paper's Sections XV–XVI have documented, then screen-mediated performance, which removes physical co-presence while preserving audiovisual transmission, poses a documented test case for whether vaikharī's own aupacārika extension into embodiment (Section 23.2) survives, is diminished, or is altered in kind under mediation — a question this paper treats as genuinely open rather than as one this paper's own textual sources can settle.</p>
+  </div>
+  <div class="subsec">
+    <h3>31.3 <span class="tag">Why This Paper Declines to Adjudicate This Question Here</span></h3>
+    <p>This paper declines to offer a confident resolution to this question, on the documented ground that no classical source this paper draws upon addresses screen-mediated or virtual performance directly, and that contemporary scholarly and practitioner opinion on the question remains, to this paper's own knowledge, genuinely divided — this paper registers the question as this sequence's own open frontier rather than supplying an answer the classical sources themselves cannot support.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION XXXII ============ -->
+<section class="roman" id="sec-32">
+  <span class="num">XXXII.</span>
+  <h2>Closing Synthesis: Thirty Topics, Five Blocks, One Documented Descent</h2>
+  <div class="subsec">
+    <h3>32.1 <span class="tag">Consolidating This Paper's Five Blocks</span></h3>
+    <p>This paper's five thematic blocks have together documented rasa's own full architecture: embodied śabda's own philosophical ground (Sections II–VII), rasa's own somatic mechanics across all four branches of abhinaya (Sections VIII–XIII), the audience's own epistemology of universalised, intersubjective, somatically mirrored reception (Sections XIV–XIX), the Nāṭyaśāstra's own ritual and cosmic frame (Sections XX–XXV), and this material's own contemporary, bracketed comparative reception (Sections XXVI–XXXI).</p>
+
+    <table class="data">
+      <caption>This Paper's Five Blocks, Complete</caption>
+      <tr><th>Block</th><th>Sections</th><th>Primary Method</th></tr>
+      <tr><td>I — Philosophy of Embodied Śabda</td><td>II–VII</td><td>Genealogical extension of Part One's own fourfold scheme</td></tr>
+      <tr><td>II — Somatic Dimensions of Rasa</td><td>VIII–XIII</td><td>Direct textual documentation of the Rasa-Sūtra and abhinaya's four branches</td></tr>
+      <tr><td>III — Epistemology of the Sahṛdaya</td><td>XIV–XIX</td><td>Abhinavagupta-centred documentation, one bracketed Western comparison</td></tr>
+      <tr><td>IV — Ritual, Cosmos, Textual Genesis</td><td>XX–XXV</td><td>Documentation of the Nāṭyaśāstra's own mythic and ritual self-framing</td></tr>
+      <tr><td>V — Contemporary Intersections</td><td>XXVI–XXXI</td><td>Explicitly bracketed comparative and reception material</td></tr>
+    </table>
+  </div>
+  <div class="subsec">
+    <h3>32.2 <span class="tag">What This Paper's Fifteen Research-Question Cards Undertake Next</span></h3>
+    <p>Having established rasa's own full documented architecture across thirty core sections, this paper now turns to fifteen research questions this paper's own opening Series Context has flagged as its dedicated further register, each argued through this series' own Lakṣaṇa–Prakriyā–Udāharaṇa–Phala method — defining characteristic (lakṣaṇa), process (prakriyā), worked example (udāharaṇa), and documented consequence (phala) — supplying this paper's own most explicit, individually addressed treatment of the questions this sequence's own research brief for this part has posed directly.</p>
+  </div>
+</section>
+
+<!-- ============ RESEARCH QUESTIONS BLOCK ============ -->
+<div class="block-divider" id="sec-rq"><span class="diamond">✦</span><div class="line"></div><span style="font-family:var(--font-display); font-size:.75rem; letter-spacing:.15em; text-transform:uppercase;">Fifteen Research Questions · Lakṣaṇa–Prakriyā–Udāharaṇa–Phala</span><div class="line"></div><span class="diamond">✦</span></div>
+
+<section class="roman" id="sec-rq-intro">
+  <span class="num">XXXIII.</span>
+  <h2>This Paper's Fifteen Research Questions, Argued Directly</h2>
+  <p>Each card below addresses one research question posed for this part through this series' established four-part method: lakṣaṇa states the defining characteristic the question turns on; prakriyā documents the specific textual or theoretical process at issue; udāharaṇa supplies a documented worked example; phala states the consequence this paper draws for its own wider genealogical argument. Questions already substantially addressed within this paper's thirty core sections are cross-referenced rather than re-argued from the beginning.</p>
+</section>
+
+<div class="rq-card">
+  <div class="rq-head"><span class="rq-num">RQ · 01</span><h3>How does Vācikābhinaya transform the metaphysical concept of Śabda into a tangible, physical affect within the spectator?</h3></div>
+  <div class="rq-body">
+    <div class="lpup">
+      <div class="lpup-row"><div class="lpup-k">Lakṣaṇa</div><div class="lpup-v"><p>Vācikābhinaya's defining characteristic, documented in Section V, is disciplined vocal delivery governed by prāṇa-technique rather than ordinary speech.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Prakriyā</div><div class="lpup-v"><p>The documented process runs from Śabdabrahman's own undifferentiated ground (Part One, Section II) through paśyantī and madhyamā (this paper's Section 2.1) into vācikābhinaya's own disciplined vaikharī, which then supplies one of the Rasa-Sūtra's own documented vibhāvas and anubhāvas (Section VIII) for the sahṛdaya's own somatic mirroring (Section XV).</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Udāharaṇa</div><div class="lpup-v"><p>A documented worked example: a performer's controlled vocal breaking (svarabheda, one of sāttvikābhinaya's own eight documented states, Section 9.1) delivered during a karuṇa-rasa passage is held to produce, through the sahṛdaya's own trained receptivity, a directly felt physiological response (Section 15.2) rather than a merely conceptual recognition that grief is being depicted.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Phala</div><div class="lpup-v"><p>This paper's consequence: vācikābhinaya is documented as the specific conduit converting Śabdabrahman's abstract metaphysical claim into a directly, physically registered spectator-side affect, supplying this paper's clearest single mechanism for the whole sequence's own genealogical claim.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="rq-card">
+  <div class="rq-head"><span class="rq-num">RQ · 02</span><h3>In what ways does Sāttvikābhinaya bridge conscious psychological acting and unconscious bodily reflex?</h3></div>
+  <div class="rq-body">
+    <div class="lpup">
+      <div class="lpup-row"><div class="lpup-k">Lakṣaṇa</div><div class="lpup-v"><p>Sāttvikābhinaya's defining characteristic, documented in Section IX, is involuntary physiological response — eight named states not standardly subject to direct voluntary control.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Prakriyā</div><div class="lpup-v"><p>The documented process, per Section 9.3, trains the conditions of arising (sustained absorption in a role's own vibhāva) rather than the involuntary response itself, locating the bridge specifically at the level of cultivated absorption rather than at the level of the reflex.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Udāharaṇa</div><div class="lpup-v"><p>A documented worked example: an actor trained to recall and re-inhabit a specific determinant with sufficient completeness is documented to reliably produce romāñca (horripilation) on cue across repeated performances, without directly willing the hair-response itself in each instance.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Phala</div><div class="lpup-v"><p>This paper's consequence: sāttvikābhinaya demonstrates that the Nāṭyaśāstra's own documented technical method already anticipates a psychosomatic training model in which conscious cultivation and involuntary result are treated as governed by a single disciplined technique rather than as opposed categories.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="rq-card">
+  <div class="rq-head"><span class="rq-num">RQ · 03</span><h3>How can Sādhāraṇīkaraṇa be recontextualised using modern neuroscientific theories of mirror neurons and empathy?</h3></div>
+  <div class="rq-body">
+    <div class="lpup">
+      <div class="lpup-row"><div class="lpup-k">Lakṣaṇa</div><div class="lpup-v"><p>Sādhāraṇīkaraṇa's defining characteristic, per Section XIV, is universalisation — the dissolution of personal ego-reference from an otherwise genuinely felt emotion.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Prakriyā</div><div class="lpup-v"><p>The documented comparative process, per Section XXVI, brackets rather than asserts a mechanism: mirror-neuron research documents observer/actor neural overlap for specific observed actions, a structurally suggestive but not textually or experimentally established parallel to sādhāraṇīkaraṇa's own documented universalising cognition.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Udāharaṇa</div><div class="lpup-v"><p>A documented worked example, offered as bracketed comparison only: a sahṛdaya's own involuntary tearing (Section 15.2) in response to a performer's own enacted karuṇa is structurally comparable to, though not established as caused by, mirror-neuron activation documented in observational-action research generally.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Phala</div><div class="lpup-v"><p>This paper's consequence: recontextualisation is available as a productive, clearly bracketed structural analogy <span class="evid-tag syn">synthetic</span>, useful for making sādhāraṇīkaraṇa legible to a neuroscience-literate readership, but this paper declines to claim that mirror-neuron research explains or validates the classical mechanism.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="rq-card">
+  <div class="rq-head"><span class="rq-num">RQ · 04</span><h3>To what extent does the Nāṭyamaṇḍapa's spatial layout function as a physical amplifier for Śabda's acoustic resonance?</h3></div>
+  <div class="rq-body">
+    <div class="lpup">
+      <div class="lpup-row"><div class="lpup-k">Lakṣaṇa</div><div class="lpup-v"><p>The nāṭyamaṇḍapa's defining characteristic, per Section XXIII, is documented proportional architectural specification governing the relationship between stage and auditorium.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Prakriyā</div><div class="lpup-v"><p>The documented process runs from pūrvaraṅga's own vocal and somatic purification of the space (Section XXII) through the architecture's own specified proportions, understood as designed specifically to carry vācikābhinaya's own vocal delivery (Section V) and āṅgikābhinaya's own visible gesture (Section X) to a distant sahṛdaya without loss of legibility.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Udāharaṇa</div><div class="lpup-v"><p>A documented worked example: the text's own specified proportional relationships between stage depth and auditorium size are documented by later scholarship as consistent with practical acoustic function for unamplified vocal and instrumental performance, though full archaeological verification remains, per Section 23.3, incomplete.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Phala</div><div class="lpup-v"><p>This paper's consequence: architecture is documented as a further, non-metaphorical instance of vaikharī's aupacārika extension, carrying embodied śabda's own transmission at the scale of built space rather than the performer's body alone.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="rq-card">
+  <div class="rq-head"><span class="rq-num">RQ · 05</span><h3>How does Sphoṭa explain the immediate, non-intellectual triggering of Rasa in an audience?</h3></div>
+  <div class="rq-body">
+    <div class="lpup">
+      <div class="lpup-row"><div class="lpup-k">Lakṣaṇa</div><div class="lpup-v"><p>Sphoṭa's defining characteristic, restated from Part One and applied in Section III, is unitary, instantaneous meaning-cognition irreducible to its sequential sound-components.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Prakriyā</div><div class="lpup-v"><p>The documented structural-synthetic process, per Section 3.1, treats rasa's own arising from the threefold Rasa-Sūtra conjunction as parallel in kind to sphoṭa's own burst — both documented as instantaneous cognitions triggered by, but not reducible to, their sequential physical causes, and both documented as grasped through pratibhā (Section 3.3).</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Udāharaṇa</div><div class="lpup-v"><p>A documented worked example: a sahṛdaya witnessing the full conjunction of a specific vibhāva, anubhāva, and vyabhicāribhāva is documented to experience rasa in a single unified cognition rather than progressively accumulating it detail by detail, structurally comparable to a listener's own single unified grasp of vākya-sphoṭa rather than a word-by-word accumulation.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Phala</div><div class="lpup-v"><p>This paper's consequence: sphoṭa theory supplies this sequence's own clearest available linguistic-philosophical model for rasa's own documented immediacy, strengthening this paper's wider genealogical claim without requiring that the Nāṭyaśāstra itself use sphoṭa vocabulary directly.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="rq-card">
+  <div class="rq-head"><span class="rq-num">RQ · 06</span><h3>In what ways do the codified Karaṇas treat the human skeleton as an instrument for channeling cosmic energy?</h3></div>
+  <div class="rq-body">
+    <div class="lpup">
+      <div class="lpup-row"><div class="lpup-k">Lakṣaṇa</div><div class="lpup-v"><p>The karaṇas' defining characteristic, previewed in Section 10.1 and reserved for full documentation in this sequence's own Part XI, is precisely specified combinations of hand, foot, and body positioning forming named, discrete units of movement.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Prakriyā</div><div class="lpup-v"><p>This paper's own documented process, offered here as a preview rather than the full treatment Part XI will supply, reads the karaṇas' own precise skeletal-positional specification (Section 10.2) as a further, more granular instance of āṅgikābhinaya's own geometric codification, this paper's Section X having already argued that such codification amplifies rather than constrains rasa's own legibility.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Udāharaṇa</div><div class="lpup-v"><p>A documented worked example, offered provisionally pending Part XI's fuller treatment: specific karaṇas associated with Śiva's own tāṇḍava (Section XXV) are documented in later iconographic tradition, including temple relief sculpture, as canonically fixed forms whose precise skeletal alignment is treated as itself religiously significant, not merely aesthetically preferred.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Phala</div><div class="lpup-v"><p>This paper's consequence: this question is substantially deferred, consistent with this series' own division-of-labour practice, to Part XI's dedicated treatment; this paper's own contribution is to establish, through Section X, the structural principle — codification amplifies rather than constrains — that Part XI's fuller answer will apply at the karaṇa system's own full documented scale.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="rq-card">
+  <div class="rq-head"><span class="rq-num">RQ · 07</span><h3>How does the metaphor of Āsvāda separate Rasa from everyday psychological emotion (Laukika Bhāva)?</h3></div>
+  <div class="rq-body">
+    <div class="lpup">
+      <div class="lpup-row"><div class="lpup-k">Lakṣaṇa</div><div class="lpup-v"><p>Āsvāda's defining characteristic, documented in Section XVII, is direct, immediate, pleasurable apprehension continuous in the tradition's own vocabulary with ordinary taste.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Prakriyā</div><div class="lpup-v"><p>The documented process separates rasa from laukika bhāva specifically through Section XIV's own universalisation: ordinary emotion remains tethered to a subject's own particular circumstances and practical stakes, while rasa-āsvāda is documented as impersonal apprehension of the same emotional quality stripped of that tethering, comparable, per Section 17.2, to brahmāsvāda though not identical with it.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Udāharaṇa</div><div class="lpup-v"><p>A documented worked example: a sahṛdaya witnessing staged karuṇa is documented to feel sorrow's own genuine quality without the accompanying documented impulse to intervene practically in the staged circumstance — an impulse that would be expected to accompany the same emotion felt as laukika bhāva toward an actual grieving acquaintance.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Phala</div><div class="lpup-v"><p>This paper's consequence: āsvāda's own taste-metaphor is documented as doing genuine conceptual work rather than merely poetic colour, marking precisely the universalised, practically disengaged quality that distinguishes rasa from its own ordinary-emotion source material.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="rq-card">
+  <div class="rq-head"><span class="rq-num">RQ · 08</span><h3>How does Ahāryābhinaya act as a technological extension of the actor's body rather than mere decoration?</h3></div>
+  <div class="rq-body">
+    <div class="lpup">
+      <div class="lpup-row"><div class="lpup-k">Lakṣaṇa</div><div class="lpup-v"><p>Ahāryābhinaya's defining characteristic, documented in Section XIII, is costume, makeup, and staged property specified with documented technical precision, including colour-coded conventions.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Prakriyā</div><div class="lpup-v"><p>The documented process, per Section 13.2, extends rather than merely dresses the performer's own physical instrument: a specific documented colour or mask is held to alter the sahṛdaya's own dṛṣṭi-level processing (Section XI) of a character's presence prior to and independent of any subsequent gesture or line.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Udāharaṇa</div><div class="lpup-v"><p>A documented worked example: a documented colour convention marking a character's specific moral or cosmic status communicates that status to a sahṛdaya the instant the character enters the acting space, prior to any vācikābhinaya or āṅgikābhinaya being performed.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Phala</div><div class="lpup-v"><p>This paper's consequence: ahāryābhinaya functions as pre-linguistic vaikharī, meaning externalised and legible prior to spoken or gestural act, supporting this paper's own wider claim that all four branches of abhinaya jointly constitute a single extended embodied instrument.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="rq-card">
+  <div class="rq-head"><span class="rq-num">RQ · 09</span><h3>To what degree must the spectator be a Sahṛdaya for the actor's physical gestures to achieve aesthetic transference?</h3></div>
+  <div class="rq-body">
+    <div class="lpup">
+      <div class="lpup-row"><div class="lpup-k">Lakṣaṇa</div><div class="lpup-v"><p>Sahṛdaya's defining characteristic, documented in Section XV, is trained aesthetic qualification, documented as a necessary rather than merely helpful precondition for rasa's own successful arising.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Prakriyā</div><div class="lpup-v"><p>The documented process treats the qualification as a genuine gate rather than a matter of degree alone: the tradition documents rasa as failing to arise, or arising only incompletely, for an unqualified spectator, regardless of the performer's own technical competence in delivering vibhāva and anubhāva (Section VIII).</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Udāharaṇa</div><div class="lpup-v"><p>A documented worked example: two spectators witnessing the identical staged conjunction of determinants and consequents are documented, on this theory's own account, to have divergent outcomes — full rasa-āsvāda for the qualified sahṛdaya, and mere recognition of depicted emotion without the documented universalised aesthetic bliss (Section 17.1), for the unqualified spectator.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Phala</div><div class="lpup-v"><p>This paper's consequence: aesthetic transference is documented as constitutively relational rather than a one-directional transmission from performer to any observer whatsoever, making the sahṛdaya's own trained receptivity as technically consequential to rasa's arising as the performer's own trained technique.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="rq-card">
+  <div class="rq-head"><span class="rq-num">RQ · 10</span><h3>How does dual cultivation of Tāṇḍava and Lāsya prevent stagnation of emotional energy within the performance space?</h3></div>
+  <div class="rq-body">
+    <div class="lpup">
+      <div class="lpup-row"><div class="lpup-k">Lakṣaṇa</div><div class="lpup-v"><p>The tāṇḍava-lāsya binary's defining characteristic, documented in Section XXV, is a paired vigorous/fluid structural range within a single performer's own cultivated repertoire.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Prakriyā</div><div class="lpup-v"><p>The documented process, per Section 25.2, functions structurally: because each documented rasa (Section 8.3) is more naturally suited to expression through one register than the other — vīra and raudra through tāṇḍava's vigor, śṛṅgāra and karuṇa through lāsya's fluidity — dual cultivation keeps the full documented range of eight or nine rasas performable within a single tradition rather than structurally favouring a narrower emotional band.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Udāharaṇa</div><div class="lpup-v"><p>A documented worked example: a single extended performance moving from raudra through karuṇa to śānta is documented, in classical dance-drama practice, to draw on both registers within its own single performer's own repertoire rather than requiring separate specialists for each emotional register.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Phala</div><div class="lpup-v"><p>This paper's consequence: the binary functions as a documented structural safeguard preserving rasa's own full taxonomic range against the narrowing a single-register specialisation would otherwise produce.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="rq-card">
+  <div class="rq-head"><span class="rq-num">RQ · 11</span><h3>How does the Nāṭyaśāstra challenge Cartesian mind-body dualism through an integrated psychosomatic theory of art?</h3></div>
+  <div class="rq-body">
+    <div class="lpup">
+      <div class="lpup-row"><div class="lpup-k">Lakṣaṇa</div><div class="lpup-v"><p>The challenge's defining characteristic is the Nāṭyaśāstra's own documented refusal, examined structurally in Section XXVII, to separate a performer's inner state from its outward embodiment as cause from effect standing in two distinct ontological registers.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Prakriyā</div><div class="lpup-v"><p>The documented process runs through sāttvikābhinaya specifically (Section IX): involuntary physical response is treated not as an external symptom of a separately existing inner emotion but as itself constitutive of the emotion's own aesthetic reality, a documented treatment this paper's Section 27.2 reads as structurally convergent with Merleau-Ponty's own bracketed refusal of expressive dualism.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Udāharaṇa</div><div class="lpup-v"><p>A documented worked example: the Rasa-Sūtra's own conjunction-structure (Section 8.2) treats vibhāva (situational cause), anubhāva (bodily effect), and the resulting rasa itself as jointly constituting a single documented aesthetic event rather than as a causal chain running from a prior mental state to a subsequent bodily symptom.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Phala</div><div class="lpup-v"><p>This paper's consequence: the Nāṭyaśāstra's own documented theory is offered as a historically prior, independently developed instance of the kind of integrated psychosomatic account later Western phenomenology, bracketed in Section XXVII, would develop through its own separate philosophical route.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="rq-card">
+  <div class="rq-head"><span class="rq-num">RQ · 12</span><h3>What role does Prāṇa play in sustaining Śabda's sonic integrity during prolonged physical exhaustion on stage?</h3></div>
+  <div class="rq-body">
+    <div class="lpup">
+      <div class="lpup-row"><div class="lpup-k">Lakṣaṇa</div><div class="lpup-v"><p>Prāṇa's defining characteristic in this context, documented in Section 5.2, is disciplined breath-technology directly bearing on vaikharī's own sustained production.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Prakriyā</div><div class="lpup-v"><p>The documented process applies this sequence's own Part Five material specifically to vācikābhinaya's own demands: sustained dramatic recitation across extended compound verse structures, documented at exceptional scale in Kūṭiyāṭṭam practice (Section XXIX), requires the same disciplined prāṇāyāma technique this sequence has already established as vaikharī's own physiological precondition, applied here under the specific additional demand of physical performance exhaustion.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Udāharaṇa</div><div class="lpup-v"><p>A documented worked example: Kūṭiyāṭṭam's own documented multi-hour elaboration of a single verse (Section 29.2) requires a performer's sustained breath-discipline across a timescale vastly exceeding ordinary speech, a documented technical demand this paper reads as direct evidence of prāṇa's own necessity for vācikābhinaya's sonic integrity under sustained exertion.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Phala</div><div class="lpup-v"><p>This paper's consequence: prāṇa is documented as the specific physiological resource preventing vaikharī's own degradation under performance exhaustion, linking this sequence's own yogic material (Parts V–VI) directly to this paper's aesthetic material as a shared technical dependency rather than a loose thematic echo.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="rq-card">
+  <div class="rq-head"><span class="rq-num">RQ · 13</span><h3>How does contemporary Kūṭiyāṭṭam performance demonstrate Embodied Śabda's survival outside its original courtly context?</h3></div>
+  <div class="rq-body">
+    <div class="lpup">
+      <div class="lpup-row"><div class="lpup-k">Lakṣaṇa</div><div class="lpup-v"><p>Kūṭiyāṭṭam's defining characteristic, documented in Section XXIX, is continuous, living transmission of Nāṭyaśāstra-derived technical method outside the text's own original documented courtly and ritual setting.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Prakriyā</div><div class="lpup-v"><p>The documented process of survival runs through hereditary family and institutional transmission (Section 29.3) rather than through the royal-court patronage structures standardly documented for much of classical Sanskrit theater's own historical setting, a documented shift in institutional support that has not, per Section 29.2, altered the technical method's own core embodied structure.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Udāharaṇa</div><div class="lpup-v"><p>A documented worked example: Kūṭiyāṭṭam's own continued practice of nētrābhinaya and hastābhinaya at documented extended timescales demonstrates that the specific embodied techniques this paper's Sections XI–XII document are still actively transmitted and performed, rather than surviving only as textual description.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Phala</div><div class="lpup-v"><p>This paper's consequence: Kūṭiyāṭṭam supplies this paper's own strongest available evidence that embodied śabda is a living technical practice rather than solely a historical textual claim this paper reconstructs from documents alone.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="rq-card">
+  <div class="rq-head"><span class="rq-num">RQ · 14</span><h3>Can text-based analysis of the Nāṭyaśāstra ever capture Rasa's true essence, or is Rasa epistemologically inaccessible outside live performance?</h3></div>
+  <div class="rq-body">
+    <div class="lpup">
+      <div class="lpup-row"><div class="lpup-k">Lakṣaṇa</div><div class="lpup-v"><p>The question's defining characteristic is a documented epistemological limit-claim: whether rasa's own full nature is accessible through textual description at all, given Section XIV–XIX's own documentation of rasa as a somatically mirrored, physically co-present phenomenon.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Prakriyā</div><div class="lpup-v"><p>The documented process draws directly on Section XXX's own decolonial critique and Section XXXI's own mediation question: if rasa's own arising depends on physical co-presence and trained embodied reception (Sections XV–XVI), textual analysis alone is documented, on this paper's own reading, to describe rasa's own theoretical architecture without thereby producing rasa's own actual aesthetic event.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Udāharaṇa</div><div class="lpup-v"><p>A documented worked example: this paper's own thirty-two core sections can document the Rasa-Sūtra's own conjunction-structure, the eight or nine rasas, and their sthāyibhāvas with textual precision, while remaining, by this paper's own explicit acknowledgment (Section 30.3), unable to produce citta-druti (Section XVIII) in a reader through textual description alone.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Phala</div><div class="lpup-v"><p>This paper's consequence: this paper documents rasa's own architecture rigorously while explicitly declining to claim that documentation is equivalent to, or a substitute for, rasa's own live embodied occurrence — a documented limit this paper treats as instructive for how this entire sequence's own textual method should itself be read.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="rq-card">
+  <div class="rq-head"><span class="rq-num">RQ · 15</span><h3>How does the "Fifth Veda" democratisation narrative rely specifically on sensory and somatic modes of communication?</h3></div>
+  <div class="rq-body">
+    <div class="lpup">
+      <div class="lpup-row"><div class="lpup-k">Lakṣaṇa</div><div class="lpup-v"><p>The Fifth Veda's defining characteristic, documented in Section XX, is explicit textual self-positioning as accessible instruction extending Vedic authority through a performative rather than a purely recited verbal form.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Prakriyā</div><div class="lpup-v"><p>The documented process, per Section 24.2, runs through the mythic four-source distillation specifically: rasa's own documented assignment to the Atharvaveda's own practically applied register, rather than to the more purely liturgical Ṛgveda or Sāmaveda, supplies the textual mechanism by which accessibility is achieved — sensory, embodied transmission rather than recited verbal instruction requiring prior grammatical training (Part One, Section 23.1's pāṭhaśālā curriculum).</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Udāharaṇa</div><div class="lpup-v"><p>A documented worked example: a spectator without pāṭhaśālā-level Sanskrit training is documented, on this theory's own account, to still access a performance's own emotional and narrative content through āṅgikābhinaya, ahāryābhinaya, and sāttvikābhinaya (this paper's Sections IX–XIII) even where the spoken vācikābhinaya's own Sanskrit register would exceed that spectator's own linguistic competence.</p></div></div>
+      <div class="lpup-row"><div class="lpup-k">Phala</div><div class="lpup-v"><p>This paper's consequence: the democratisation claim is documented as depending specifically on abhinaya's own multi-channel, partially non-verbal structure, qualified by Section 20.3's own historical caution regarding actual documented access to formal training and performance.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TAB WIDGET ============ -->
+<div class="tabwidget" id="tabwidget-anchor">
+  <div class="tabwidget-head">
+    <div class="eyebrow">Interactive · Six Panels</div>
+    <h2>Rasa and Embodied Śabda — Deep-Dive Tabs</h2>
+    <p>Each panel supplies material at a level of depth beyond this paper's thirty-two core sections and fifteen research-question cards. Panels are independently navigable and do not require sequential reading.</p>
+  </div>
+  <div class="tabs" role="tablist">
+    <button class="tab-btn active" role="tab" data-tab="t1">I · Rasa Across Commentarial Schools</button>
+    <button class="tab-btn" role="tab" data-tab="t2">II · The Number-of-Rasas Debate</button>
+    <button class="tab-btn" role="tab" data-tab="t3">III · Rasa in Kashmir Śaivism</button>
+    <button class="tab-btn" role="tab" data-tab="t4">IV · Comparative Aesthetic Doctrines</button>
+    <button class="tab-btn" role="tab" data-tab="t5">V · Preview of Parts IX–XII</button>
+    <button class="tab-btn" role="tab" data-tab="t6">VI · Interactive Glossary</button>
+  </div>
+
+  <div class="tab-panel active" id="t1">
+    <h4>Rasa's Documented Treatment Across the Principal Commentarial Schools</h4>
+    <p>This paper's core sections have followed Abhinavagupta's own documented synthesis as primary, consistent with this sequence's own Part One practice (Section 27.2) of naming an editorial choice explicitly. This panel documents the wider field Abhinavagupta's own synthesis responds to.</p>
+    <table class="data">
+      <caption>Rasa Theory's Documented Principal Positions</caption>
+      <tr><th>Theorist / School</th><th>Documented Core Position</th></tr>
+      <tr><td>Bhaṭṭa Lollaṭa</td><td>Documented to hold that rasa is produced (utpatti) directly in the character portrayed, and inferred by the spectator through the actor's own successful imitation.</td></tr>
+      <tr><td>Śrī Śaṅkuka</td><td>Documented to hold that rasa arises through inference (anumiti) specifically, the spectator inferring the character's emotion from the actor's own skillfully imitative signs.</td></tr>
+      <tr><td>Bhaṭṭa Nāyaka</td><td>Documented to reject both production and inference models, proposing instead bhāvakatva (a generalising power) and bhogakṛttva (a power of aesthetic enjoyment) as the operative mechanisms, a documented position this paper reads as a direct forerunner to Abhinavagupta's own sādhāraṇīkaraṇa.</td></tr>
+      <tr><td>Abhinavagupta</td><td>Documented to synthesise and extend Bhaṭṭa Nāyaka's own generalising model into the full sādhāraṇīkaraṇa and rasa-āsvāda framework this paper's Sections XIV and XVII document as primary.</td></tr>
+    </table>
+    <p>This paper's own synthetic observation is that the documented historical sequence from Lollaṭa through Śaṅkuka, Nāyaka, and finally Abhinavagupta traces a progressive documented shift away from treating rasa as located primarily in the character or inferred from the actor, toward treating rasa as an achievement occurring specifically within the qualified spectator's own universalised cognition — a documented trajectory this paper reads as directly supporting its own Section XIV emphasis on the sahṛdaya's own epistemological centrality.</p>
+  </div>
+
+  <div class="tab-panel" id="t2">
+    <h4>The Documented Debate Over the Number of Rasas</h4>
+    <p>Section 8.3 introduced the core eight rasas and śānta's own documented status as a contested later ninth addition. This panel documents that debate's own further texture.</p>
+    <p><strong>The case for eight.</strong> Some documented early sources and commentators hold that the Nāṭyaśāstra's own original sixth chapter names only eight rasas, with śānta's own explicit theoretical elaboration documented as arising in later commentarial literature, most significantly associated with Abhinavagupta's own predecessor Udbhaṭa and Abhinavagupta's own subsequent full defence.</p>
+    <p><strong>The case for nine.</strong> Abhinavagupta's own documented defence of śānta holds that peace (śama) is not merely one emotional register among others but is documented as the ground-state to which all other rasas ultimately return, giving śānta a documented claim to inclusion structurally comparable to, though distinct from, this sequence's own treatment of parā as speech's ultimate ground (Part One, Section VII).</p>
+    <p><strong>Later documented proposals beyond nine.</strong> Some later sources document further proposed additions, including vātsalya (parental affection), though these later proposals are documented as considerably less widely accepted within the mainstream commentarial tradition than śānta's own now largely settled ninth position.</p>
+    <p>This paper's own synthetic observation, offered as structural-synthetic proposal <span class="evid-tag syn">synthetic</span>, is that śānta's own documented candidacy — a rasa named for the very absence of the emotional agitation the other eight are documented to elaborate — supplies a further, independent point of contact with this sequence's own parā material, worth flagging for Part Twelve's own closing synthesis specifically.</p>
+  </div>
+
+  <div class="tab-panel" id="t3">
+    <h4>Rasa's Documented Reception Within Kashmir Śaivism</h4>
+    <p>Part One's own Tab Panel III documented Kashmir Śaivism's related but distinct fourfold speech-scheme. This panel documents that same tradition's own further, explicitly aesthetic elaboration, since Abhinavagupta himself is documented as a principal figure within Kashmir Śaivism as well as within aesthetic theory specifically.</p>
+    <table class="data">
+      <caption>Two Registers of a Single Documented Author</caption>
+      <tr><th>Register</th><th>Documented Primary Concern</th><th>This Paper's Own Cross-Reference</th></tr>
+      <tr><td>Kashmir Śaiva theology</td><td>Śiva-Śakti's own non-dual self-awareness, parā-paśyantī-madhyamā-vaikharī as theological descent</td><td>Part One, Tab Panel III</td></tr>
+      <tr><td>Aesthetic theory (Abhinavabhārati, Locana)</td><td>Rasa's own sādhāraṇīkaraṇa and āsvāda, documented in this paper's Sections XIV–XVII</td><td>This paper, Sections XIV–XVII</td></tr>
+    </table>
+    <p>This paper reads Abhinavagupta's own documented dual authorship across both registers as significant rather than coincidental: rasa-āsvāda's own documented comparison to brahmāsvāda (Section 17.2) is, on this paper's reading, not a loose analogy imported from outside Abhinavagupta's own thought but a documented consequence of a single author working within both a non-dual theological framework and an aesthetic-theoretical framework simultaneously, treating the two as genuinely continuous rather than as separate departments of a single career.</p>
+  </div>
+
+  <div class="tab-panel" id="t4">
+    <h4>Comparative Aesthetic Doctrines, Explicitly Bracketed</h4>
+    <p>Consistent with this series' recurring practice, this panel documents further structural comparisons beyond Section XIX's own catharsis material and Section XXVII's own phenomenology material, each offered strictly at the structural level.</p>
+    <table class="data">
+      <caption>Rasa Compared With Two Further Aesthetic Frameworks</caption>
+      <tr><th>Tradition</th><th>Structural Parallel</th><th>Documented Difference</th></tr>
+      <tr><td>Kantian disinterested aesthetic judgment</td><td>Both frameworks document a documented separation between aesthetic response and practical, self-interested desire regarding the object witnessed</td><td>Kant's own documented framework grounds this in a universal faculty of judgment applicable without specialised training; rasa theory documents the sahṛdaya's own trained qualification (Section XV) as a necessary precondition Kant's own account does not require</td></tr>
+      <tr><td>Zeami's yūgen in Noh theater</td><td>Both frameworks document a codified taxonomy of performance states tied to specific trained physical technique and a qualified audience</td><td>Yūgen's own documented emphasis on subtle, restrained suggestion differs structurally from rasa's own documented full taxonomic range extending explicitly to vigorous registers (raudra, vīra) alongside restrained ones</td></tr>
+    </table>
+  </div>
+
+  <div class="tab-panel" id="t5">
+    <h4>Preview: Where Parts Nine Through Twelve Pick Up This Paper's Threads</h4>
+    <p><strong>Part IX — Abhinaya's Fourfold Method.</strong> Returns to this paper's Sections VIII–XIII with full technical documentation of āṅgika, vācika, āhārya, and sāttvika as an integrated training curriculum, rather than this paper's own necessarily more compressed treatment.</p>
+    <p><strong>Part X — Toward the Karaṇas.</strong> Takes up this paper's Section 10.1 and RQ·06 directly, documenting the specific textual transition from āṅgikābhinaya's general vocabulary to the karaṇa system's own fully codified units.</p>
+    <p><strong>Part XI — The 108 Karaṇas.</strong> Documents the karaṇa system's own full structure and source, completing RQ·06's own deferred treatment.</p>
+    <p><strong>Part XII — Closing Synthesis.</strong> Returns to this paper's own Section 32.1 table and this paper's own śānta/parā observation (Tab Panel II) in tracing the complete documented arc from Śabdabrahman to śarīra.</p>
+  </div>
+
+  <div class="tab-panel" id="t6">
+    <h4>Interactive Glossary</h4>
+    <div class="glossary-grid">
+      <div class="gloss-entry"><div class="dev">रसः</div><div class="translit">rasa</div><p>Aesthetic flavour or emotion, arising from the documented conjunction of vibhāva, anubhāva, and vyabhicāribhāva (Section VIII).</p></div>
+      <div class="gloss-entry"><div class="dev">अभिनयः</div><div class="translit">abhinaya</div><p>The fourfold documented method of dramatic expression: āṅgika, vācika, āhārya, sāttvika.</p></div>
+      <div class="gloss-entry"><div class="dev">साधारणीकरणम्</div><div class="translit">sādhāraṇīkaraṇa</div><p>Universalisation; the dissolution of personal ego-reference from genuinely felt aesthetic emotion (Section XIV).</p></div>
+      <div class="gloss-entry"><div class="dev">सहृदयः</div><div class="translit">sahṛdaya</div><p>The qualified spectator whose trained sensibility is documented as necessary for rasa's arising (Section XV).</p></div>
+      <div class="gloss-entry"><div class="dev">आस्वादः</div><div class="translit">āsvāda</div><p>"Tasting" — direct, immediate apprehension of rasa (Section XVII).</p></div>
+      <div class="gloss-entry"><div class="dev">चित्तद्रुतिः</div><div class="translit">citta-druti</div><p>Melting of mind; the sahṛdaya's own phenomenological softening during rasa-apprehension (Section XVIII).</p></div>
+      <div class="gloss-entry"><div class="dev">सात्त्विकाभिनयः</div><div class="translit">sāttvikābhinaya</div><p>Involuntary physical response — eight documented states including tears, horripilation, and trembling (Section IX).</p></div>
+      <div class="gloss-entry"><div class="dev">दृष्टिभेदः</div><div class="translit">dṛṣṭi-bheda</div><p>The documented taxonomy of eye-movements, each proper to a specific emotional register (Section XI).</p></div>
+      <div class="gloss-entry"><div class="dev">जर्जरः</div><div class="translit">jarjara</div><p>Indra's consecrated banner, ritually installed to protect the performance space (Section XXI).</p></div>
+      <div class="gloss-entry"><div class="dev">पूर्वरङ्गः</div><div class="translit">pūrvaraṅga</div><p>The extended documented ritual preliminaries purifying the stage before dramatic action begins (Section XXII).</p></div>
+      <div class="gloss-entry"><div class="dev">ताण्डवम् / लास्यम्</div><div class="translit">tāṇḍava / lāsya</div><p>The vigorous and fluid documented paired modes of classical dance (Section XXV).</p></div>
+      <div class="gloss-entry"><div class="dev">स्थायिभावः</div><div class="translit">sthāyibhāva</div><p>The stable underlying emotion each rasa is documented to elaborate (Section 8.3).</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ APPENDIX ============ -->
+<div class="appendix" id="sec-appendix">
+  <h2>Methodological Appendix: Evidentiary Categories Applied in This Paper</h2>
+  <p>Following the evidentiary practice this series applies throughout, and consistent with Part One's own appendix, this appendix distinguishes the categories this paper's thirty-two core sections and fifteen research-question cards have tried consistently to keep separate. First, directly documented textual claim — the Rasa-Sūtra's own conjunction-structure (Section VIII), the eight core rasas (Section 8.3), the four branches of abhinaya (Sections VIII–XIII), and the Fifth Veda mythic account (Section XXIV) all fall in this category, drawn from the Nāṭyaśāstra's own text and its principal commentarial tradition in standard critical editions. Second, this paper's own structural-synthetic proposal, marked inline with <span class="evid-tag syn">synthetic</span> — most prominently the sphoṭa/rasa structural parallel (Section III), the performer-body fourfold-scheme mapping (Section II), and the mirror-neuron comparison (Section XXVI), offered as this paper's own organising interpretation rather than as claims any single primary source states in precisely these terms. Third, explicitly bracketed comparative material, marked inline with <span class="evid-tag brk">bracketed</span> where flagged — the Aristotelian catharsis comparison (Section XIX), the Merleau-Ponty comparison (Section XXVII), and Tab Panel IV's own further comparisons, offered for structural and documentary value without claiming historical connection or doctrinal equivalence.</p>
+
+  <table class="data">
+    <caption>Evidentiary Categories, This Paper</caption>
+    <tr><th>Category</th><th>Example</th><th>Section(s)</th></tr>
+    <tr><td>Directly documented textual claim</td><td>Rasa-Sūtra; eight core rasas; four branches of abhinaya; Fifth Veda myth</td><td>VIII, 8.3, VIII–XIII, XXIV</td></tr>
+    <tr><td>Structural-synthetic proposal</td><td>Sphoṭa/rasa parallel; performer-body fourfold mapping; mirror-neuron comparison</td><td>III, II, XXVI</td></tr>
+    <tr><td>Bracketed comparison</td><td>Aristotelian catharsis; Merleau-Ponty; Kantian judgment; Zeami's yūgen</td><td>XIX, XXVII, Tab IV</td></tr>
+  </table>
+</div>
+
+<!-- ============ FOOTNOTES ============ -->
+<div class="footnotes" id="footnotes">
+  <h2>Footnotes</h2>
+  <ol>
+    <li>On the Rasa-Sūtra and the eight core rasas: Bharata, <em>Nāṭyaśāstra</em>, Chapter Six, standard critical editions with Abhinavagupta's Abhinavabhārati.</li>
+    <li>On sāttvikābhinaya's eight documented involuntary states: Nāṭyaśāstra, Chapter Seven, standard critical editions.</li>
+    <li>On āṅgikābhinaya, cārīs, and the karaṇa vocabulary generally: Nāṭyaśāstra, Chapters Eight through Thirteen, standard critical editions; reserved for full treatment in this sequence's own Part XI.</li>
+    <li>On dṛṣṭi-bheda: Nāṭyaśāstra, Chapter Eight, standard critical editions.</li>
+    <li>On mudrā and hasta vocabulary: Nāṭyaśāstra, Chapter Nine, standard critical editions; later systematisation surveyed in Nandikeśvara, <em>Abhinayadarpaṇa</em>, standard critical editions.</li>
+    <li>On ahāryābhinaya and staging conventions: Nāṭyaśāstra, Chapters Twenty-One through Twenty-Three, standard critical editions.</li>
+    <li>On sādhāraṇīkaraṇa and rasa-āsvāda: Abhinavagupta, <em>Abhinavabhārati</em>, standard critical editions; surveyed in J. L. Masson and M. V. Patwardhan, <em>Śāntarasa and Abhinavagupta's Philosophy of Aesthetics</em> (Poona: Bhandarkar Oriental Research Institute, 1969).</li>
+    <li>On dhvani theory and its convergence with rasa theory: Ānandavardhana, <em>Dhvanyāloka</em>, with Abhinavagupta's <em>Locana</em>, standard critical editions.</li>
+    <li>On the documented historical debate over rasa's mechanism (Lollaṭa, Śaṅkuka, Bhaṭṭa Nāyaka, Abhinavagupta): surveyed in Masson and Patwardhan, op. cit., and in K. Kunjunni Raja, <em>Indian Theories of Meaning</em> (Madras: Adyar Library and Research Centre, 1963), already cited in Part One.</li>
+    <li>On the Fifth Veda myth and pūrvaraṅga: Nāṭyaśāstra, Chapters One and Five, standard critical editions.</li>
+    <li>On the jarjara: Nāṭyaśāstra, Chapter One, standard critical editions.</li>
+    <li>On theater architecture: Nāṭyaśāstra, Chapter Two, standard critical editions.</li>
+    <li>On tāṇḍava and lāsya: standard sources on classical Indian dance theory, surveyed generally alongside the Nāṭyaśāstra's own Chapter Four.</li>
+    <li>On Kūṭiyāṭṭam: UNESCO Intangible Cultural Heritage documentation; Bruce M. Sullivan, ed., <em>Sanskrit Drama in Performance</em> generally, surveyed for this paper's introductory purposes only.</li>
+    <li>On Aristotelian catharsis, offered strictly as bracketed comparison: Aristotle, <em>Poetics</em>, standard critical editions.</li>
+    <li>On Merleau-Ponty's lived body, offered strictly as bracketed comparison: Maurice Merleau-Ponty, <em>Phenomenology of Perception</em>, standard translations.</li>
+    <li>On mirror-neuron research, offered strictly as bracketed comparison: general neuroscience literature on observation-execution neural overlap, cited without claim of direct application to rasa theory.</li>
+    <li>On decolonial critique of textual privileging in performance-tradition scholarship: general contemporary critical-theoretical literature, cited at the introductory level this paper's Section XXX applies.</li>
+    <li>On this paper's own relationship to Part Seven and the aupacārika prayoga warrant: this sequence, Series A Extended, Part Seven, Section 35.1.</li>
+  </ol>
+</div>
+
+<!-- ============ BIBLIOGRAPHY ============ -->
+<div class="bibliography" id="bibliography">
+  <h2>Bibliography</h2>
+  <h4>Primary Sources</h4>
+  <p>Bharata. <em>Nāṭyaśāstra.</em> With Abhinavagupta's Abhinavabhārati. Standard critical editions.<br>
+  Ānandavardhana. <em>Dhvanyāloka.</em> With Abhinavagupta's Locana. Standard critical editions.<br>
+  Nandikeśvara. <em>Abhinayadarpaṇa.</em> Standard critical editions.<br>
+  Aristotle. <em>Poetics.</em> Standard critical editions and translations.</p>
+
+  <h4>Secondary Sources</h4>
+  <p>Masson, J. L., and M. V. Patwardhan. <em>Śāntarasa and Abhinavagupta's Philosophy of Aesthetics.</em> Poona: Bhandarkar Oriental Research Institute, 1969.<br>
+  Kunjunni Raja, K. <em>Indian Theories of Meaning.</em> Madras: Adyar Library and Research Centre, 1963.<br>
+  Merleau-Ponty, Maurice. <em>Phenomenology of Perception.</em> Standard translations.<br>
+  UNESCO Intangible Cultural Heritage. Documentation on Kūṭiyāṭṭam, Sanskrit Theatre.</p>
+
+  <h4>Predecessor Material</h4>
+  <p>Cultural Musings. <em>Series A Extended, Parts One Through Seven.</em> As cited in this paper's own Series Context section, particularly Part One's fourfold speech-scheme and Part Seven's aupacārika prayoga warrant.</p>
+</div>
+
+<!-- ============ GLOSSARY (FINAL) ============ -->
+<div class="glossary-final" id="glossary">
+  <h2>Glossary</h2>
+  <div class="glossary-grid">
+    <div class="gloss-entry"><div class="dev">रस-सूत्रम्</div><div class="translit">rasa-sūtra</div><p>The Nāṭyaśāstra's own documented formula for rasa's conjunction-based arising (Section VIII).</p></div>
+    <div class="gloss-entry"><div class="dev">विभावः / अनुभावः / व्यभिचारिभावः</div><div class="translit">vibhāva / anubhāva / vyabhicāribhāva</div><p>Determinant, consequent, and transitory state — the Rasa-Sūtra's own three documented conjoined elements (Section 8.1).</p></div>
+    <div class="gloss-entry"><div class="dev">आङ्गिकाभिनयः</div><div class="translit">āṅgikābhinaya</div><p>Bodily-gesture branch of abhinaya, documented with geometric precision (Section X).</p></div>
+    <div class="gloss-entry"><div class="dev">वाचिकाभिनयः</div><div class="translit">vācikābhinaya</div><p>Vocal-delivery branch of abhinaya, documented as prāṇa's own conduit (Section V).</p></div>
+    <div class="gloss-entry"><div class="dev">आहार्याभिनयः</div><div class="translit">āhāryābhinaya</div><p>Costume and staged-property branch of abhinaya, documented as extended corporeality (Section XIII).</p></div>
+    <div class="gloss-entry"><div class="dev">नाट्यमण्डपः</div><div class="translit">nāṭyamaṇḍapa</div><p>The documented architectural theater-space, specified for acoustic transmission (Section XXIII).</p></div>
+    <div class="gloss-entry"><div class="dev">नाट्यवेदः</div><div class="translit">nāṭyaveda</div><p>The "veda of drama," documented as the Fifth Veda in the Nāṭyaśāstra's own mythic account (Section XX).</p></div>
+    <div class="gloss-entry"><div class="dev">प्रतिभा</div><div class="translit">pratibhā</div><p>Direct, non-inferential insight, documented as shared vocabulary between sphoṭa and rasa cognition (Section 3.3).</p></div>
+    <div class="gloss-entry"><div class="dev">कूटियाट्टम्</div><div class="translit">kūṭiyāṭṭam</div><p>Kerala's own living Sanskrit theater tradition, documented as this paper's clearest evidence of embodied śabda's own survival (Section XXIX).</p></div>
+    <div class="gloss-entry"><div class="dev">औपचारिकप्रयोगः</div><div class="translit">aupacārika prayoga</div><p>Part Seven's own documented technical warrant for vaikharī's extension to gesture, this paper's own inherited foundation (Series Context).</p></div>
+  </div>
+</div>
+
+<!-- ============ RECAP ============ -->
+<div class="recap" id="sec-recap">
+  <h2>Recap, Closing Synthesis, and Handoff to Part Nine</h2>
+  <p>Thirty-two core sections organised across five thematic blocks, fifteen research-question cards argued through the Lakṣaṇa–Prakriyā–Udāharaṇa–Phala method, and a six-panel deep-dive widget have together established this paper's own full documented claim: rasa is vaikharī's own furthest traced elaboration prior to full codification, arising through the trained performer's own embodied conjunction of vibhāva, anubhāva, and vyabhicāribhāva across all four branches of abhinaya, apprehended by a qualified sahṛdaya through a documented process of universalisation, somatic mirroring, and intersubjective sharing, embedded throughout in a genuinely sacralised ritual and architectural frame the Nāṭyaśāstra's own mythic self-understanding names explicitly as a Fifth Veda.</p>
+
+  <blockquote>Every earlier part of this sequence asked how sound descends. This paper has asked what sound becomes once the descent reaches a trained human body standing before another trained human body — not a metaphor for embodiment, but embodiment's own most fully documented classical theory.</blockquote>
+
+  <p>Part Nine inherits from this paper the four branches of abhinaya this paper's Sections VIII–XIII have introduced (āṅgika, vācika, āhārya, sāttvika) and completes them with the full technical training-curriculum this paper's own more compressed treatment has necessarily deferred, before this sequence's Part Ten turns to the specific textual transition from general gestural vocabulary to the karaṇa system's own full codification.</p>
+
+  <div class="handoff">
+    <span>◀ <a href="#">Part Seven · Vaikharī Becomes Gesture</a></span>
+    <span><a href="#">Part Nine · Abhinaya's Fourfold Method</a> ▶</span>
+  </div>
+
+  <div class="signoff">ॐ तत् सत्<br>om tat sat — That is Truth</div>
+</div>
+
+</div><!-- /.wrap -->
+
+<footer class="sitefoot">
+  <div class="om">卐 ✦ 卐</div>
+  <p><strong>Series A · Extended Sequence · Part Eight</strong> · Nāṭyaśāstra I: Rasa as Embodied Śabda</p>
+  <p>Cultural Musings · Vedic &amp; Śāstric Research Platform</p>
+  <p>Predecessor: Part Seven — Vaikharī Becomes Gesture: The Threshold to Abhinaya</p>
+  <p>Successor: Part Nine · Nāṭyaśāstra II: Abhinaya's Fourfold Method</p>
+</footer>
+</main>
+
+<script>
+document.querySelectorAll('.tab-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var target = btn.getAttribute('data-tab');
+    document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+    btn.classList.add('active');
+    document.getElementById(target).classList.add('active');
+  });
+});
+document.querySelectorAll('.view-toggle button').forEach(function(btn, idx){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.view-toggle button').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
